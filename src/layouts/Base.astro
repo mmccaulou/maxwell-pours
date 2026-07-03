@@ -8,12 +8,14 @@ interface Props {
 const { title, description = 'Let\'s get into wine worth drinking.' } = Astro.props;
 
 const nav = [
-  { label: 'On the Floor',  href: '/category/on-the-floor/' },
   { label: 'In the Glass',  href: '/category/in-the-glass/' },
+  { label: 'On the Floor',  href: '/category/on-the-floor/' },
   { label: 'At the Table',  href: '/category/at-the-table/' },
   { label: 'Off the Map',   href: '/category/off-the-map/'  },
   { label: 'Punch Downs',   href: '/category/punch-downs/'  },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="en">
@@ -68,7 +70,11 @@ const nav = [
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
           {nav.map(({ label, href }) => (
-            <li><a href={href}>{label}</a></li>
+            <li>
+              <a href={href} class={currentPath.startsWith(href) ? 'is-active' : ''}>
+                {label}
+              </a>
+            </li>
           ))}
         </ul>
       </nav>
@@ -194,6 +200,7 @@ const nav = [
   transition: color 0.18s;
 }
 .site-nav a:hover { color: var(--hot-pink); }
+.site-nav a.is-active { color: var(--cherry); }
 
 /* --- Desktop ----------------------------------------------- */
 
