@@ -84,27 +84,6 @@ const currentPath = Astro.url.pathname;
 
   <!-- ====================================================== -->
   <main>
-    <!-- SVG filter defs: width/height=0 attributes + display:block prevents
-         any browser from giving it default SVG dimensions -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="0"
-      height="0"
-      aria-hidden="true"
-      focusable="false"
-      style="display:block;position:absolute;width:0;height:0;overflow:hidden"
-    >
-      <defs>
-        <filter id="duotone-petrol-cherry" color-interpolation-filters="sRGB">
-          <feColorMatrix type="saturate" values="0" result="gray"/>
-          <feColorMatrix type="matrix" in="gray"
-            values=" 0.639  0  0  0  0.055
-                    -0.313  0  0  0  0.431
-                    -0.204  0  0  0  0.439
-                     0      0  0  1  0"/>
-        </filter>
-      </defs>
-    </svg>
     <slot />
   </main>
 
