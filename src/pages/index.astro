@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Duotone from '../components/Duotone.astro';
 
 const allPosts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -19,12 +20,11 @@ const categoryLabels: Record<string, string> = {
 
   <!-- =====================================================
        HERO
-       Full-bleed photo, full color. Cherry headline.
+       Full-bleed petrol/cream duotone. Cherry headline.
        ===================================================== -->
   <section class="hero">
     <div class="hero__frame">
-      <img
-        class="hero__img"
+      <Duotone
         src="/images/munier-at-bubble-bliss.jpeg"
         alt="A glass of white wine on a marble bar in a stone-arched cave"
       />
@@ -127,14 +127,10 @@ const categoryLabels: Record<string, string> = {
   max-height: 900px;
 }
 
-/* Photo fills the frame */
-.hero__img {
+/* Duotone fills the frame */
+.hero__frame :global(.duotone) {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 /* Text anchored to the bottom, readable via gradient */
@@ -160,7 +156,7 @@ const categoryLabels: Record<string, string> = {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 5.5rem);
   font-weight: 800;
-  color: var(--cherry);
+  color: var(--lifted-cream);
   line-height: 1.05;
   letter-spacing: -0.02em;
   max-width: 16ch;

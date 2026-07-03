@@ -1,18 +1,14 @@
 ---
 /**
- * Duotone — cherry-toned image treatment for hero/title images only.
+ * Duotone — two-tone image treatment for hero/title images only.
  * Body images and post-grid thumbnails stay full-color.
  *
- * Usage:
- *   <Duotone src="/images/foo.jpg" alt="Description" />
- *
- * How it works (CSS-only, no JS, no build step):
- *   1. The container's background is set to Cherry.
+ * How it works (CSS-only, no JS):
+ *   1. The container background is the shadow color (petrol).
  *   2. The image is desaturated to grayscale.
- *   3. mix-blend-mode: screen lets the Cherry background bleed through
- *      dark areas while bright areas stay light (cream/ivory).
- *   Result: a genuine two-tone image — Cherry in the shadows,
- *   cream in the highlights — purely in CSS.
+ *   3. mix-blend-mode: screen lets the petrol show through dark areas
+ *      while bright areas stay light (cream/ivory).
+ *   Result: petrol in the shadows, lifted cream in the highlights.
  */
 interface Props {
   src: string;
@@ -26,7 +22,7 @@ const { src, alt } = Astro.props;
 
 <style>
 .duotone {
-  background-color: var(--cherry);
+  background-color: var(--petrol);
   overflow: hidden;
   width: 100%;
   height: 100%;
