@@ -7,20 +7,330 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   heroImage?: string;
+  category?: string;
+  body: string;   // raw markdown, used only for read-time estimate
 }
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, body } = Astro.props;
+
+// Read-time estimate: ~200 words per minute
+const words = body.trim().split(/\s+/).length;
+const readTime = Math.max(1, Math.ceil(words / 200));
+
+const categoryLabels: Record<string, string> = {
+  'in-the-glass': 'In the Glass',
+  'on-the-floor': 'On the Floor',
+  'at-the-table': 'At the Table',
+  'off-the-map':  'Off the Map',
+  'punch-downs':  'Punch Downs',
+};
+const categoryLabel = category ? categoryLabels[category] : null;
 ---
+
 <Base title={title} description={description}>
-  <article>
-    {heroImage && <img src={heroImage} alt={title} style="max-width:100%;height:auto;" />}
-    <h1>{title}</h1>
-    <time datetime={pubDate.toISOString()}>
-      {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-    </time>
-    {updatedDate && (
-      <p>Updated: <time datetime={updatedDate.toISOString()}>{updatedDate.toLocaleDateString()}</time></p>
+  <article class="post">
+
+    <!-- =====================================================
+         HERO IMAGE — full-bleed, full-color
+         ===================================================== -->
+    {heroImage && (
+      <div class="post__hero">
+        <img src={heroImage} alt={title} class="post__hero-img" />
+      </div>
     )}
-    <slot />
+
+    <!-- =====================================================
+         HEADER — headline, dek, metadata
+         ===================================================== -->
+    <header class="post__header container">
+      {categoryLabel && (
+        <span class="tag">{categoryLabel}</span>
+      )}
+      <h1 class="post__title">{title}</h1>
+      {description && (
+        <p class="post__dek">{description}</p>
+      )}
+      <div class="post__meta">
+        <time datetime={pubDate.toISOString()}>
+          {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="post__meta-sep" aria-hidden="true">·</span>
+        <span>{readTime} min read</span>
+        {updatedDate && (
+          <>
+            <span class="post__meta-sep" aria-hidden="true">·</span>
+            <span>Updated {updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </>
+        )}
+      </div>
+    </header>
+
+    <!-- =====================================================
+         PROSE BODY
+         Styles below handle: subheads, pull-quotes (blockquote),
+         inline images, hot-pink captions (em after img), lists.
+         ===================================================== -->
+    <div class="post__body container">
+      <slot />
+    </div>
+
+    <!-- =====================================================
+         AUTHOR BIO — foot of article
+         ===================================================== -->
+    <aside class="post__bio container">
+      <div class="bio">
+        <img
+          src="/images/moscato-day-tuxedo.jpeg"
+          alt="Maxwell"
+          class="bio__photo"
+        />
+        <div class="bio__text">
+          <p class="bio__name">Maxwell</p>
+          <p class="bio__copy">
+            <!-- PLACEHOLDER: replace with your real bio before launch -->
+            Maxwell is a sommelier and wine writer based in the Pacific Northwest.
+            He writes about the bottles worth drinking, the places worth visiting,
+            and the people who make both possible.
+          </p>
+        </div>
+      </div>
+    </aside>
+
   </article>
 </Base>
+
+
+<style>
+/* ============================================================
+   ARTICLE LAYOUT
+   ============================================================ */
+
+.post { width: 100%; }
+
+
+/* --- HERO -------------------------------------------------- */
+
+.post__hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--deep-cream);
+}
+
+.post__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .post__hero { aspect-ratio: 21 / 9; }
+}
+
+
+/* --- HEADER ------------------------------------------------ */
+
+.post__header {
+  padding-block: 2.5rem 0;
+  max-width: var(--prose-width);
+}
+
+.post__header .tag {
+  margin-bottom: 1rem;
+}
+
+.post__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--cherry);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+
+.post__dek {
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+  color: var(--muted-ink);
+  line-height: 1.5;
+  margin-top: 0.875rem;
+  max-width: 52ch;
+}
+
+.post__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--muted-ink);
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--deep-cream);
+}
+
+.post__meta-sep { opacity: 0.4; }
+
+
+/* --- PROSE BODY -------------------------------------------- */
+
+.post__body {
+  padding-block: 2.5rem;
+  max-width: var(--prose-width);
+}
+
+/* Paragraphs */
+.post__body :global(p) {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  max-width: 68ch;
+}
+
+/* Subheads */
+.post__body :global(h2) {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.post__body :global(h3) {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Pull-quotes — styled blockquote */
+.post__body :global(blockquote) {
+  position: relative;
+  margin-block: 2.5rem;
+  margin-inline: 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  background-color: var(--deep-cream);
+  border-left: 3px solid var(--hot-pink);
+}
+
+.post__body :global(blockquote)::before {
+  content: '\201C';   /* opening curly quote */
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--hot-pink);
+  line-height: 1;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  opacity: 0.6;
+}
+
+.post__body :global(blockquote p) {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 0;
+  padding-top: 1.5rem;   /* clear the large quote mark */
+}
+
+/* Inline images — full-width within prose column */
+.post__body :global(img) {
+  width: 100%;
+  height: auto;
+  margin-block: 2rem;
+  display: block;
+}
+
+/* Hot-pink captions: em tag immediately after an image */
+.post__body :global(img + em),
+.post__body :global(p > img + em) {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--hot-pink);
+  margin-top: -1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Lists */
+.post__body :global(ul),
+.post__body :global(ol) {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post__body :global(ul) { list-style: disc; }
+.post__body :global(ol) { list-style: decimal; }
+
+.post__body :global(li) {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+/* Links within prose */
+.post__body :global(a) {
+  color: var(--petrol);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.post__body :global(a:hover) { color: var(--cherry); }
+
+/* Horizontal rule */
+.post__body :global(hr) {
+  border: none;
+  border-top: 1px solid var(--deep-cream);
+  margin-block: 3rem;
+}
+
+
+/* --- AUTHOR BIO -------------------------------------------- */
+
+.post__bio {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--deep-cream);
+  max-width: var(--prose-width);
+}
+
+.bio {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.bio__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+}
+
+.bio__name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.375rem;
+}
+
+.bio__copy {
+  font-size: 0.9375rem;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  max-width: 52ch;
+}
+</style>
