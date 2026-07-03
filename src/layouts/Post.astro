@@ -166,7 +166,7 @@ const categoryLabel = category ? categoryLabels[category] : null;
   gap: 0.4rem;
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  color: var(--muted-ink);
+  color: var(--hot-pink);
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--deep-cream);
@@ -180,6 +180,14 @@ const categoryLabel = category ? categoryLabels[category] : null;
 .post__body {
   padding-block: 2.5rem;
   max-width: var(--prose-width);
+}
+
+@media (min-width: 768px) {
+  .post__header,
+  .post__body,
+  .post__bio {
+    max-width: clamp(44rem, 68vw, 64rem);
+  }
 }
 
 /* Paragraphs */
@@ -261,6 +269,90 @@ const categoryLabel = category ? categoryLabels[category] : null;
   color: var(--hot-pink);
   margin-top: -1.25rem;
   margin-bottom: 2rem;
+}
+
+/* figcaption (used with figure elements for sized images) */
+.post__body :global(figcaption) {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--hot-pink);
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- Image sizing utilities --------------------------------
+   Use in Decap CMS by wrapping the image in a <figure> tag.
+
+   Full-width (default — no class needed):
+     <figure>
+       <img src="/images/my-photo.jpg" alt="description" />
+       <figcaption>Optional caption here</figcaption>
+     </figure>
+
+   Wide — breaks out beyond the prose column:
+     <figure class="img-wide">…</figure>
+
+   Float left — text wraps to the right:
+     <figure class="img-left">…</figure>
+
+   Float right — text wraps to the left:
+     <figure class="img-right">…</figure>
+
+   After any float, add <div class="img-clear"></div> to
+   stop text from continuing to wrap.
+------------------------------------------------------------- */
+
+.post__body :global(figure) {
+  margin-block: 2rem;
+}
+
+.post__body :global(figure img) {
+  margin-block: 0;
+}
+
+/* Wide: bleeds ~20% beyond the prose column on each side */
+.post__body :global(figure.img-wide) {
+  margin-inline: -6vw;
+}
+
+/* Float left: half-width, text wraps right */
+.post__body :global(figure.img-left) {
+  float: left;
+  width: 45%;
+  margin-top: 0.25rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 0;
+}
+
+/* Float right: half-width, text wraps left */
+.post__body :global(figure.img-right) {
+  float: right;
+  width: 45%;
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 0;
+}
+
+/* Clear floats */
+.post__body :global(.img-clear) {
+  clear: both;
+  display: block;
+}
+
+/* On small screens, floats become full-width */
+@media (max-width: 639px) {
+  .post__body :global(figure.img-left),
+  .post__body :global(figure.img-right) {
+    float: none;
+    width: 100%;
+    margin-inline: 0;
+  }
+  .post__body :global(figure.img-wide) {
+    margin-inline: 0;
+  }
 }
 
 /* Lists */
