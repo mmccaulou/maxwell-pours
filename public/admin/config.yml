@@ -30,6 +30,16 @@ collections:
         name: heroImage
         widget: image
         required: false
+      - label: Category
+        name: category
+        widget: select
+        required: false
+        options:
+          - { label: "In the Glass",  value: "in-the-glass"  }
+          - { label: "On the Floor",  value: "on-the-floor"  }
+          - { label: "At the Table",  value: "at-the-table"  }
+          - { label: "Off the Map",   value: "off-the-map"   }
+          - { label: "Punch Downs",   value: "punch-downs"   }
       - label: Draft
         name: draft
         widget: boolean

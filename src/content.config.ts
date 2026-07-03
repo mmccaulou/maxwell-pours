@@ -10,6 +10,7 @@ const posts = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
+    category: z.enum(['in-the-glass', 'on-the-floor', 'at-the-table', 'off-the-map', 'punch-downs']).optional(),
     draft: z.boolean().optional().default(false),
   }),
 });
