@@ -1,14 +1,15 @@
 ---
 /**
- * Duotone — two-tone image treatment for hero/title images only.
- * Body images and post-grid thumbnails stay full-color.
+ * Duotone — petrol-to-cherry image treatment for hero images.
  *
- * How it works (CSS-only, no JS):
- *   1. The container background is the shadow color (petrol).
- *   2. The image is desaturated to grayscale.
- *   3. mix-blend-mode: screen lets the petrol show through dark areas
- *      while bright areas stay light (cream/ivory).
- *   Result: petrol in the shadows, lifted cream in the highlights.
+ * Uses an SVG feColorMatrix filter for a precise two-color duotone:
+ *   Dark tones  → Petrol  #0E6E70
+ *   Light tones → Cherry  #B11E3C
+ *
+ * The math: after converting to grayscale (v = 0–1),
+ *   R_out = 0.639v + 0.055   (0 → petrol R, 1 → cherry R)
+ *   G_out = −0.313v + 0.431  (0 → petrol G, 1 → cherry G)
+ *   B_out = −0.204v + 0.439  (0 → petrol B, 1 → cherry B)
  */
 interface Props {
   src: string;
@@ -16,13 +17,35 @@ interface Props {
 }
 const { src, alt } = Astro.props;
 ---
+
+<!-- Zero-size SVG holds the filter definition — invisible, not announced to screen readers -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+  style="position:absolute;width:0;height:0;overflow:hidden"
+>
+  <defs>
+    <filter id="duotone-petrol-cherry" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="0" result="gray" />
+      <feColorMatrix
+        type="matrix"
+        in="gray"
+        values=" 0.639  0  0  0  0.055
+                -0.313  0  0  0  0.431
+                -0.204  0  0  0  0.439
+                 0      0  0  1  0"
+      />
+    </filter>
+  </defs>
+</svg>
+
 <div class="duotone">
   <img src={src} alt={alt} />
 </div>
 
 <style>
 .duotone {
-  background-color: var(--petrol);
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -34,8 +57,6 @@ const { src, alt } = Astro.props;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%) contrast(1.1);
-  mix-blend-mode: screen;
-  opacity: 0.82;
+  filter: url(#duotone-petrol-cherry);
 }
 </style>
