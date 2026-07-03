@@ -1,17 +1,11 @@
-# Decap CMS Configuration for Maxwell Pours
-# Auth: Cloudflare Pages built-in GitHub OAuth proxy
 backend:
   name: github
-  repo: mmccaulou/maxwell-pours        # your GitHub username / repo name
+  repo: mmccaulou/maxwell-pours
   branch: main
-  base_url: https://maxwellpours.com   # must match your live domain exactly
+  base_url: https://maxwellpours.com
 
-# Where uploaded images are stored in the repo
 media_folder: public/images
 public_folder: /images
-
-# The CMS editor will show a live preview of your post as you type
-# (Decap handles this client-side — no server needed)
 
 collections:
   - name: posts
@@ -20,9 +14,26 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string", required: false }
-      - { label: "Publish Date", name: "pubDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Hero Image", name: "heroImage", widget: "image", required: false, media_library: { config: { multiple: false } } }
-      - { label: "Draft", name: "draft", widget: "boolean", default: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: Title
+        name: title
+        widget: string
+      - label: Description
+        name: description
+        widget: string
+        required: false
+      - label: Publish Date
+        name: pubDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+      - label: Hero Image
+        name: heroImage
+        widget: image
+        required: false
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Body
+        name: body
+        widget: markdown
