@@ -1,0 +1,48 @@
+/* ============================================================
+   MAXWELL POURS — Design Tokens
+   Single source of truth for every color and font on the site.
+   Import this file nowhere directly — it's imported by global.css,
+   which every layout already pulls in.
+   ============================================================ */
+
+:root {
+
+  /* --- COLORS ------------------------------------------------ */
+
+  /* Lead: masthead, logo, nav, links, rules, CTA bands */
+  --petrol:       #0E6E70;
+  --petrol-hover: #0a5254;          /* darkened for hover states */
+  --petrol-wash:  #0e6e700f;        /* 6% tint for soft section washes */
+
+  /* Co-star: hero duotone, headlines, feature sections */
+  --cherry:       #B11E3C;
+  --cherry-hover: #8f1830;
+  --cherry-wash:  #b11e3c0a;
+
+  /* Frequent-but-small: tags, buttons, pull-quote marks, hovers */
+  --hot-pink:       #E84A8A;
+  --hot-pink-hover: #d03878;
+
+  /* Page foundation — the paper (no pure white anywhere) */
+  --lifted-cream: #FAF3E5;
+
+  /* Borders, hairlines, raised surfaces (pull-quotes, sidebars, The Bottle) */
+  --deep-cream:   #F4E9D2;
+
+  /* Typography */
+  --ink:          #211318;   /* body text & headlines */
+  --muted-ink:    #5A4A48;   /* captions, metadata, secondary text */
+
+
+  /* --- FONTS ------------------------------------------------- */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+
+  /* --- SPACING & LAYOUT -------------------------------------- */
+
+  --content-width: 72rem;    /* max page width */
+  --prose-width:   44rem;    /* max article body width for comfortable reading */
+  --gap:           1.5rem;   /* base column gap */
+}
