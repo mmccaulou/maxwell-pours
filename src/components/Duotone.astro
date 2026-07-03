@@ -18,29 +18,28 @@ interface Props {
 const { src, alt } = Astro.props;
 ---
 
-<!-- Zero-size SVG holds the filter definition — invisible, not announced to screen readers -->
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
-  focusable="false"
-  style="position:absolute;width:0;height:0;overflow:hidden"
->
-  <defs>
-    <filter id="duotone-petrol-cherry" color-interpolation-filters="sRGB">
-      <feColorMatrix type="saturate" values="0" result="gray" />
-      <feColorMatrix
-        type="matrix"
-        in="gray"
-        values=" 0.639  0  0  0  0.055
-                -0.313  0  0  0  0.431
-                -0.204  0  0  0  0.439
-                 0      0  0  1  0"
-      />
-    </filter>
-  </defs>
-</svg>
-
 <div class="duotone">
+  <!-- Zero-size SVG inside the container so it never affects surrounding layout -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    style="position:absolute;width:0;height:0;overflow:hidden"
+  >
+    <defs>
+      <filter id="duotone-petrol-cherry" color-interpolation-filters="sRGB">
+        <feColorMatrix type="saturate" values="0" result="gray" />
+        <feColorMatrix
+          type="matrix"
+          in="gray"
+          values=" 0.639  0  0  0  0.055
+                  -0.313  0  0  0  0.431
+                  -0.204  0  0  0  0.439
+                   0      0  0  1  0"
+        />
+      </filter>
+    </defs>
+  </svg>
   <img src={src} alt={alt} />
 </div>
 
