@@ -1,0 +1,86 @@
+---
+/**
+ * TwoUp — two photos side by side with one shared caption.
+ * On mobile, the pair stacks into a single column.
+ *
+ * Props:
+ *   src1, src2     — paths from /images/… (both required)
+ *   alt1, alt2     — describe what is in each photo (required, for accessibility)
+ *   label          — short hot-pink ALL-CAPS label above the caption (optional)
+ *   caption        — shared caption in muted ink below the label (optional)
+ */
+
+interface Props {
+  src1: string;
+  alt1: string;
+  src2: string;
+  alt2: string;
+  label?: string;
+  caption?: string;
+}
+
+const { src1, alt1, src2, alt2, label, caption } = Astro.props;
+---
+
+<figure class="twoup">
+  <div class="twoup__pair">
+    <img src={src1} alt={alt1} loading="lazy" decoding="async" class="twoup__img" />
+    <img src={src2} alt={alt2} loading="lazy" decoding="async" class="twoup__img" />
+  </div>
+  {(label || caption) && (
+    <figcaption class="twoup__caption-wrap">
+      {label   && <span class="twoup__label">{label}</span>}
+      {caption && <span class="twoup__caption">{caption}</span>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+.twoup {
+  margin-block: 2.25rem;
+}
+
+.twoup__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+
+/* On mobile the pair stacks */
+@media (max-width: 639px) {
+  .twoup__pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.twoup__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.twoup__caption-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+}
+
+.twoup__label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--hot-pink);
+}
+
+.twoup__caption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+</style>

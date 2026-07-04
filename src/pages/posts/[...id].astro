@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Post from '../../layouts/Post.astro';
+import Figure from '../../components/Figure.astro';
+import TwoUp from '../../components/TwoUp.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -22,5 +24,5 @@ const { Content } = await render(post);
   category={post.data.category}
   body={post.body ?? ''}
 >
-  <Content />
+  <Content components={{ Figure, TwoUp }} />
 </Post>

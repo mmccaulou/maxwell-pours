@@ -1,0 +1,119 @@
+---
+/**
+ * Figure — body image with optional caption.
+ *
+ * Props:
+ *   src      — path from /images/… (required)
+ *   alt      — describe what is in the photo (required, for accessibility)
+ *   layout   — 'inset' | 'full-bleed' | 'float-left' | 'float-right'
+ *              defaults to 'inset'
+ *   label    — short hot-pink ALL-CAPS label above the caption  (optional)
+ *   caption  — one-line description in muted ink below the label (optional)
+ */
+
+interface Props {
+  src: string;
+  alt: string;
+  layout?: 'inset' | 'full-bleed' | 'float-left' | 'float-right';
+  label?: string;
+  caption?: string;
+}
+
+const { src, alt, layout = 'inset', label, caption } = Astro.props;
+---
+
+<figure class={`fig fig--${layout}`}>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {(label || caption) && (
+    <figcaption>
+      {label  && <span class="fig__label">{label}</span>}
+      {caption && <span class="fig__caption">{caption}</span>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+/* ---- Base -------------------------------------------------- */
+.fig {
+  margin-block: 2.25rem;
+  margin-inline: 0;
+}
+
+.fig img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fig figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+}
+
+.fig__label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--hot-pink);
+}
+
+.fig__caption {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted-ink);
+}
+
+/* ---- INSET (default) — text-column width, no override needed */
+
+/* ---- FULL-BLEED — breaks the prose column ---- */
+.fig--full-bleed {
+  margin-inline: calc(-1 * var(--gap, 1.5rem));
+}
+
+@media (min-width: 768px) {
+  .fig--full-bleed {
+    margin-inline: -10vw;
+  }
+}
+
+/* ---- FLOAT LEFT ---- */
+.fig--float-left {
+  float: left;
+  width: 40%;
+  margin-top: 0.25rem;
+  margin-right: 2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 0;
+  clear: left;
+}
+
+/* ---- FLOAT RIGHT ---- */
+.fig--float-right {
+  float: right;
+  width: 40%;
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  margin-right: 0;
+  clear: right;
+}
+
+/* ---- MOBILE: every layout goes full-width ---- */
+@media (max-width: 639px) {
+  .fig--float-left,
+  .fig--float-right {
+    float: none;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .fig--full-bleed {
+    margin-inline: calc(-1 * var(--gap, 1.5rem));
+  }
+}
+</style>
