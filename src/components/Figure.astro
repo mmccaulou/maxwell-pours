@@ -15,15 +15,22 @@ interface Props {
   src: string;
   alt: string;
   layout?: 'inset' | 'full-bleed' | 'float-left' | 'float-right';
+  aspect?: string;   // e.g. "16/9", "4/3", "1/1" — omit to use photo's natural ratio
   label?: string;
   caption?: string;
 }
 
-const { src, alt, layout = 'inset', label, caption } = Astro.props;
+const { src, alt, layout = 'inset', aspect, label, caption } = Astro.props;
 ---
 
 <figure class={`fig fig--${layout}`}>
-  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    style={aspect ? `aspect-ratio:${aspect};object-fit:cover;width:100%;` : undefined}
+  />
   {(label || caption) && (
     <figcaption>
       {label  && <span class="fig__label">{label}</span>}
