@@ -9,16 +9,18 @@
     </style>
     <clipPath id="rr"><rect width="100" height="100" rx="22" ry="22"/></clipPath>
   </defs>
-  <rect width="100" height="100" fill="#B11E3C" clip-path="url(#rr)"/>
-  <text
-    x="50" y="50"
-    text-anchor="middle"
-    dominant-baseline="central"
-    font-family="Fraunces"
-    font-weight="800"
-    font-size="48"
-    fill="#FAF3E5"
-    letter-spacing="-2"
-    style="font-variation-settings:'wght' 800,'opsz' 144;"
-  >MP</text>
+  <g clip-path="url(#rr)">
+    <rect width="100" height="100" fill="#B11E3C"/>
+    <text
+      x="50" y="50"
+      text-anchor="middle"
+      dominant-baseline="central"
+      font-family="Fraunces"
+      font-weight="800"
+      font-size="44"
+      fill="#FAF3E5"
+      letter-spacing="3"
+      style="font-variation-settings:'wght' 800,'opsz' 144;"
+    >MP</text>
+  </g>
 </svg>
