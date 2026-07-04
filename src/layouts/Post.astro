@@ -32,18 +32,23 @@ const categoryLabel = category ? categoryLabels[category] : null;
 
     <!-- =====================================================
          HERO IMAGE — full-bleed, full-color
+         Category tag overlaid bottom-left when hero exists.
          ===================================================== -->
     {heroImage && (
       <div class="post__hero">
         <img src={heroImage} alt={title} class="post__hero-img" />
+        {categoryLabel && (
+          <span class="post__hero-tag">{categoryLabel}</span>
+        )}
       </div>
     )}
 
     <!-- =====================================================
          HEADER — headline, dek, metadata
+         Tag only appears here when there is no hero image.
          ===================================================== -->
     <header class="post__header container">
-      {categoryLabel && (
+      {categoryLabel && !heroImage && (
         <span class="tag">{categoryLabel}</span>
       )}
       <h1 class="post__title">{title}</h1>
@@ -111,6 +116,7 @@ const categoryLabel = category ? categoryLabels[category] : null;
 /* --- HERO -------------------------------------------------- */
 
 .post__hero {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
@@ -122,6 +128,28 @@ const categoryLabel = category ? categoryLabels[category] : null;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.post__hero-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background-color: var(--hot-pink);
+  padding: 0.3em 0.7em;
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .post__hero-tag {
+    bottom: 1.75rem;
+    left: 2rem;
+  }
 }
 
 @media (min-width: 768px) {
