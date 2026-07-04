@@ -48,14 +48,17 @@ const categoryLabel = category ? categoryLabels[category] : null;
          Tag only appears here when there is no hero image.
          ===================================================== -->
     <header class="post__header container">
-      {categoryLabel && !heroImage && (
-        <span class="tag">{categoryLabel}</span>
-      )}
       <h1 class="post__title">{title}</h1>
       {description && (
         <p class="post__dek">{description}</p>
       )}
       <div class="post__meta">
+        {categoryLabel && !heroImage && (
+          <>
+            <span class="tag tag--small">{categoryLabel}</span>
+            <span class="post__meta-sep" aria-hidden="true">·</span>
+          </>
+        )}
         <time datetime={pubDate.toISOString()}>
           {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
