@@ -299,10 +299,19 @@ const currentPath = Astro.url.pathname;
   .site-nav {
     max-height: none !important;   /* always visible */
     overflow: visible;
-    width: 95%;
-    margin-inline: auto;
-    border-top: 1px solid rgba(250, 243, 229, 0.18);
+    position: relative;
     margin-top: 1rem;
+  }
+
+  /* Separator breaks out of the container to span 95vw */
+  .site-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95vw;
+    border-top: 1px solid rgba(250, 243, 229, 0.18);
   }
 
   .site-nav ul {
