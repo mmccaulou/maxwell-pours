@@ -125,14 +125,27 @@ const categoryLabel = category ? categoryLabels[category] : null;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--deep-cream);
+  background-color: #400B15; /* duotone shadow — also shows during image load */
 }
 
+/* Duotone: grayscale + multiply against shadow, screen layer adds cream highlights */
 .post__hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: grayscale(1) contrast(1.05);
+  mix-blend-mode: multiply;
+}
+
+.post__hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #FAF3E5;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .post__hero-tag {
@@ -148,6 +161,7 @@ const categoryLabel = category ? categoryLabels[category] : null;
   background-color: var(--hot-pink);
   padding: 0.3em 0.7em;
   border-radius: 6px;
+  z-index: 2; /* above the screen overlay */
 }
 
 @media (min-width: 768px) {
