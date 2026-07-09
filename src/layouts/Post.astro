@@ -122,7 +122,6 @@ const categoryLabel = category ? categoryLabels[category] : null;
 
 .post__hero {
   position: relative;
-  isolation: isolate;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
@@ -134,18 +133,6 @@ const categoryLabel = category ? categoryLabels[category] : null;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(1);
-}
-
-/* Cherry duotone: color blend maps cherry hue onto the grayscale image */
-.post__hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #B11E3C;
-  mix-blend-mode: color;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .post__hero-tag {

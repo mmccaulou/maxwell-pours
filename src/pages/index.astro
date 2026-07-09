@@ -242,8 +242,6 @@ const categoryLabels: Record<string, string> = {
 
 .post-card__image-link {
   display: block;
-  position: relative;
-  isolation: isolate;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   background-color: var(--deep-cream);
@@ -254,21 +252,10 @@ const categoryLabels: Record<string, string> = {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(1);
   transition: transform 0.4s ease;
 }
 .post-card__image-link:hover .post-card__image {
   transform: scale(1.03);
-}
-
-/* Cherry duotone: color blend maps cherry hue onto the grayscale image */
-.post-card__image-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #B11E3C;
-  mix-blend-mode: color;
-  pointer-events: none;
 }
 
 .post-card__body {
