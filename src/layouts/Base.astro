@@ -228,13 +228,18 @@ const currentPath = Astro.url.pathname;
   .site-nav {
     max-height: none !important;   /* always visible */
     overflow: visible;
+    width: 95%;
+    margin-inline: auto;
+    border-top: 1px solid rgba(250, 243, 229, 0.18);
+    margin-top: 1rem;
   }
 
   .site-nav ul {
     flex-direction: row;
     gap: 2rem;
     padding-block: 0.75rem;
-    margin-top: 0.75rem;
+    margin-top: 0;
+    border-top: none;
     justify-content: center;
   }
 
