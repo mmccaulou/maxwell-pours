@@ -215,9 +215,13 @@ const currentPath = Astro.url.pathname;
 @media (min-width: 768px) {
   .masthead__inner {
     grid-template-areas:
-      "brand brand"
-      "nav   nav";
+      "brand"
+      "nav";
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
+
+  .masthead__brand { text-align: center; }
 
   .nav-label { display: none; }   /* hide hamburger */
 
@@ -231,6 +235,7 @@ const currentPath = Astro.url.pathname;
     gap: 2rem;
     padding-block: 0.75rem;
     margin-top: 0.75rem;
+    justify-content: center;
   }
 
   .site-nav a {
