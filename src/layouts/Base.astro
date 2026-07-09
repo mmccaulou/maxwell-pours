@@ -104,6 +104,27 @@ const currentPath = Astro.url.pathname;
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const masthead = document.querySelector('.masthead');
+      if (!masthead) return;
+      let lastY = window.scrollY;
+
+      window.addEventListener('scroll', function () {
+        const y = window.scrollY;
+        if (y > 72) {
+          if (y > lastY) {
+            masthead.classList.add('masthead--compact');
+          } else {
+            masthead.classList.remove('masthead--compact');
+          }
+        } else {
+          masthead.classList.remove('masthead--compact');
+        }
+        lastY = y;
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
 
@@ -115,10 +136,14 @@ const currentPath = Astro.url.pathname;
 .masthead {
   background-color: var(--petrol);
   color: var(--lifted-cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .masthead__inner {
   padding-block: 1.5rem 1.25rem;
+  transition: padding 0.25s ease;
   display: grid;
   grid-template-areas:
     "brand toggle"
@@ -150,6 +175,37 @@ const currentPath = Astro.url.pathname;
   color: var(--lifted-cream);
   margin-top: 0.25rem;
   letter-spacing: 0.01em;
+  max-height: 2rem;
+  overflow: hidden;
+  opacity: 1;
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease;
+}
+
+/* --- Compact state (scrolling down) ------------------------ */
+
+.masthead--compact .masthead__inner {
+  padding-block: 0.625rem 0.625rem;
+}
+
+.masthead--compact .tagline {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+/* Mobile: also collapse the open nav when going compact */
+.masthead--compact .nav-toggle:not(:checked) ~ .site-nav {
+  max-height: 0;
+}
+
+@media (min-width: 768px) {
+  .masthead--compact .masthead__inner {
+    padding-block: 0.625rem 0;
+  }
+  /* Keep nav visible on desktop compact, just tighten spacing */
+  .masthead--compact .site-nav {
+    margin-top: 0.5rem;
+  }
 }
 
 /* --- Mobile hamburger toggle ------------------------------- */
