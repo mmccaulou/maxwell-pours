@@ -122,28 +122,28 @@ const categoryLabel = category ? categoryLabels[category] : null;
 
 .post__hero {
   position: relative;
+  isolation: isolate;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: #400B15; /* duotone shadow — also shows during image load */
+  background-color: var(--deep-cream);
 }
 
-/* Duotone: grayscale + multiply against shadow, screen layer adds cream highlights */
 .post__hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(1) contrast(1.05);
-  mix-blend-mode: multiply;
+  filter: grayscale(1);
 }
 
+/* Cherry duotone: color blend maps cherry hue onto the grayscale image */
 .post__hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: #FAF3E5;
-  mix-blend-mode: screen;
+  background: #B11E3C;
+  mix-blend-mode: color;
   pointer-events: none;
   z-index: 1;
 }
