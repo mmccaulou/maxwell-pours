@@ -63,26 +63,58 @@ Duotone is applied by baking it into the image file at build time using sharp (p
 | Mid | `#651122` | Clearly cherry, slightly washed |
 | Bold | `#B11E3C` | Full cherry flood |
 
-To regenerate at any point, edit `/tmp/duotone-avg.cjs` (or recreate it) with the shadow/highlight values above and run `node /tmp/duotone-avg.cjs`. The highlight color should always be `#FAF3E5`.
+### How it works
 
-### Applying a duotone to a new image
+The effect is baked directly into the image file using Node + sharp — pixel by pixel. Each pixel is converted to grayscale, then linearly interpolated between the shadow color (dark tones) and the highlight color (light tones). The result is a JPEG saved alongside the original. No CSS filters are used anywhere; the `<img>` tag just references the baked file.
+
+CSS blend mode approaches were tried and rejected — they produced oversaturated color and incorrect highlights compared to the baked result.
+
+### Workflow for new hero images
+
+1. Upload the original photo via the CMS as normal. It lands in `public/images/`.
+2. Tell Claude the filename. Claude runs the bake script and produces `filename-cherry.jpeg` in the same folder.
+3. Update the post's `heroImage` frontmatter to reference the `-cherry` version.
+4. The original file is kept untouched as a source.
+
+### Bake script (run from the repo root)
+
+Save as any `.cjs` file and run with `node`:
 
 ```js
-// Shadow and highlight are [R, G, B] arrays
-const shadow    = [0x40, 0x0B, 0x15]; // current setting
-const highlight = [0xFA, 0xF3, 0xE5]; // always lifted cream
+const sharp = require('./node_modules/sharp');
+const fs    = require('fs');
+const path  = require('path');
 
-const { data, info } = await sharp(INPUT).greyscale().raw().toBuffer({ resolveWithObject: true });
-const out = Buffer.alloc(info.width * info.height * 3);
-for (let i = 0; i < info.width * info.height; i++) {
-  const g = data[i] / 255;
-  out[i * 3]     = Math.round(shadow[0] + (highlight[0] - shadow[0]) * g);
-  out[i * 3 + 1] = Math.round(shadow[1] + (highlight[1] - shadow[1]) * g);
-  out[i * 3 + 2] = Math.round(shadow[2] + (highlight[2] - shadow[2]) * g);
+const INPUT  = './public/images/YOUR-PHOTO.jpeg';
+const OUTPUT = './public/images/YOUR-PHOTO-cherry.jpeg';
+
+const shadow    = [64, 11, 21];        // #400B15 — approved cherry shadow
+const highlight = [0xFA, 0xF3, 0xE5]; // #FAF3E5 — Lifted Cream
+
+async function run() {
+  const { data, info } = await sharp(INPUT).greyscale().raw().toBuffer({ resolveWithObject: true });
+  const out = Buffer.alloc(info.width * info.height * 3);
+  for (let i = 0; i < info.width * info.height; i++) {
+    const g = data[i] / 255;
+    out[i * 3]     = Math.round(shadow[0] + (highlight[0] - shadow[0]) * g);
+    out[i * 3 + 1] = Math.round(shadow[1] + (highlight[1] - shadow[1]) * g);
+    out[i * 3 + 2] = Math.round(shadow[2] + (highlight[2] - shadow[2]) * g);
+  }
+  await sharp(out, { raw: { width: info.width, height: info.height, channels: 3 } })
+    .jpeg({ quality: 90 }).toFile(OUTPUT);
+  console.log('Done →', OUTPUT);
 }
-await sharp(out, { raw: { width: info.width, height: info.height, channels: 3 } })
-  .jpeg({ quality: 90 }).toFile(OUTPUT);
+
+run().catch(console.error);
 ```
+
+### Existing baked hero images
+
+| Original | Baked version | Used in |
+|---|---|---|
+| `PSG-crosswalk-paris.jpeg` | `PSG-cherry-final.jpeg` | Homepage hero |
+| `bar-etna-at-open.jpeg` | `bar-etna-at-open-cherry.jpeg` | Wine Bar Hunting in Paris |
+| `meunier-at-bubble-bliss.jpeg` | `meunier-at-bubble-bliss-cherry.jpeg` | Chardonnay demo post |
 
 ---
 
