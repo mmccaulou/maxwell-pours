@@ -247,7 +247,7 @@ const currentPath = Astro.url.pathname;
 .site-nav ul {
   display: flex;
   flex-direction: column;
-  padding-block: 0 0.75rem;
+  padding-block: 0;
   border-top: 1px solid rgba(250, 243, 229, 0.18);
   margin-top: 1rem;
 }
@@ -266,6 +266,7 @@ const currentPath = Astro.url.pathname;
 }
 .site-nav a:hover { color: var(--hot-pink); }
 .site-nav a.is-active { color: var(--cherry); }
+.site-nav li:last-child a { border-bottom: none; }
 
 /* --- Desktop ----------------------------------------------- */
 
