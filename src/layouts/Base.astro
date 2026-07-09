@@ -118,7 +118,7 @@ const currentPath = Astro.url.pathname;
 }
 
 .masthead__inner {
-  padding-block: 1.5rem 0;
+  padding-block: 1.5rem 1.25rem;
   display: grid;
   grid-template-areas:
     "brand toggle"
@@ -146,9 +146,9 @@ const currentPath = Astro.url.pathname;
 
 .tagline {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.8125rem;
   color: var(--lifted-cream);
-  margin-top: 0.375rem;
+  margin-top: 0.25rem;
   letter-spacing: 0.01em;
 }
 
@@ -219,6 +219,7 @@ const currentPath = Astro.url.pathname;
       "nav";
     grid-template-columns: 1fr;
     justify-items: center;
+    padding-block-end: 0;
   }
 
   .masthead__brand { text-align: center; }
