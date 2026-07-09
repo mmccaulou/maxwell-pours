@@ -112,11 +112,23 @@ const currentPath = Astro.url.pathname;
       let lastY = window.scrollY;
 
       const navToggle = document.getElementById('nav-toggle');
+      let locked = false;
 
       window.addEventListener('scroll', function () {
         const y = window.scrollY;
         const delta = y - lastY;
-        if (Math.abs(delta) < 6) return;
+        lastY = y;
+
+        // Ignore tiny movements
+        if (Math.abs(delta) < 8) return;
+
+        // Freeze near the bottom to absorb elastic bounce
+        const nearBottom = y + window.innerHeight >= document.documentElement.scrollHeight - 60;
+        if (nearBottom) return;
+
+        // Cooldown: don't flip state more than once per 150ms
+        if (locked) return;
+
         if (y > 72) {
           if (delta > 0) {
             masthead.classList.add('masthead--compact');
@@ -127,7 +139,9 @@ const currentPath = Astro.url.pathname;
         } else {
           masthead.classList.remove('masthead--compact');
         }
-        lastY = y;
+
+        locked = true;
+        setTimeout(() => { locked = false; }, 150);
       }, { passive: true });
     })();
   </script>
