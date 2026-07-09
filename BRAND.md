@@ -115,6 +115,7 @@ run().catch(console.error);
 | `PSG-crosswalk-paris.jpeg` | `PSG-cherry-final.jpeg` | Homepage hero |
 | `bar-etna-at-open.jpeg` | `bar-etna-at-open-cherry.jpeg` | Wine Bar Hunting in Paris |
 | `meunier-at-bubble-bliss.jpeg` | `meunier-at-bubble-bliss-cherry.jpeg` | Chardonnay demo post |
+| `squating-in-field.jpeg` | `squating-in-field-cherry.jpeg` | Hello World |
 
 ---
 
