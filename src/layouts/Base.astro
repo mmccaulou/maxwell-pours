@@ -115,8 +115,10 @@ const currentPath = Astro.url.pathname;
 
       window.addEventListener('scroll', function () {
         const y = window.scrollY;
+        const delta = y - lastY;
+        if (Math.abs(delta) < 6) return;
         if (y > 72) {
-          if (y > lastY) {
+          if (delta > 0) {
             masthead.classList.add('masthead--compact');
             if (navToggle) navToggle.checked = false;
           } else {
