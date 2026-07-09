@@ -110,11 +110,14 @@ const currentPath = Astro.url.pathname;
       if (!masthead) return;
       let lastY = window.scrollY;
 
+      const navToggle = document.getElementById('nav-toggle');
+
       window.addEventListener('scroll', function () {
         const y = window.scrollY;
         if (y > 72) {
           if (y > lastY) {
             masthead.classList.add('masthead--compact');
+            if (navToggle) navToggle.checked = false;
           } else {
             masthead.classList.remove('masthead--compact');
           }
