@@ -10,7 +10,7 @@
     <clipPath id="rr"><rect width="100" height="100" rx="22" ry="22"/></clipPath>
   </defs>
   <g clip-path="url(#rr)">
-    <rect width="100" height="100" fill="#B11E3C"/>
+    <rect width="100" height="100" fill="#0E6E70"/>
     <text
       x="50" y="50"
       text-anchor="middle"
