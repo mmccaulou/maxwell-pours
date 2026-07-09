@@ -48,12 +48,23 @@ const categoryLabels: Record<string, string> = {
           <article class="post-card">
             {post.data.heroImage && (
               <a href={`/posts/${post.id}/`} class="post-card__image-link" tabindex="-1" aria-hidden="true">
-                <img
-                  src={post.data.heroImage}
-                  alt={post.data.title}
-                  class="post-card__image"
-                  loading="lazy"
-                />
+                <div class="post-card__images">
+                  {post.data.heroImage.includes('-cherry') && (
+                    <img
+                      src={post.data.heroImage.replace(/-cherry(\.[^.]+)$/, '$1')}
+                      alt=""
+                      class="post-card__image post-card__image--original"
+                      loading="lazy"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    class={`post-card__image${post.data.heroImage.includes('-cherry') ? ' post-card__image--cherry' : ''}`}
+                    loading="lazy"
+                  />
+                </div>
               </a>
             )}
             <div class="post-card__body">
@@ -248,15 +259,37 @@ const categoryLabels: Record<string, string> = {
   background-color: var(--deep-cream);
 }
 
+.post-card__images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+.post-card__image-link:hover .post-card__images {
+  transform: scale(1.03);
+}
+
 .post-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.4s ease;
 }
-.post-card__image-link:hover .post-card__image {
-  transform: scale(1.03);
+
+/* Full-color original sits beneath, revealed on hover */
+.post-card__image--original {
+  position: absolute;
+  inset: 0;
+}
+
+/* Cherry version sits on top and fades out on hover */
+.post-card__image--cherry {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+.post-card__image-link:hover .post-card__image--cherry {
+  opacity: 0;
 }
 
 .post-card__body {
