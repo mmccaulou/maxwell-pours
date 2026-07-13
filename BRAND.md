@@ -42,11 +42,13 @@ Fraunces is loaded from Google Fonts. The variable font (wght axis + opsz axis) 
 
 ---
 
-## Duotone — Hero Images
+## Duotone — Optional Artistic Treatment
 
-Duotone is applied by baking it into the image file at build time using sharp (pixel-level, no CSS filter). It is used on hero images only. Body images are always full-color.
+> **Current status: not in use.** All hero images run full-color. Duotone is available as a deliberate per-article choice for artistic effect.
 
-### Current settings (homepage hero)
+The homepage card hover also has a built-in color-reveal: if a `-cherry` version is referenced in `heroImage`, the card fades from duotone to full color on hover. This is inert when full-color images are used.
+
+### Approved settings
 
 | Parameter | Value |
 |---|---|
@@ -59,17 +61,17 @@ Duotone is applied by baking it into the image file at build time using sharp (p
 | Name | Shadow hex | Character |
 |---|---|---|
 | Subtle | `#1A0408` | Warm monochrome, cherry barely perceptible |
-| **Current** | `#400B15` | Cherry present, photo detail intact |
+| **Approved** | `#400B15` | Cherry present, photo detail intact |
 | Mid | `#651122` | Clearly cherry, slightly washed |
 | Bold | `#B11E3C` | Full cherry flood |
 
 ### How it works
 
-The effect is baked directly into the image file using Node + sharp — pixel by pixel. Each pixel is converted to grayscale, then linearly interpolated between the shadow color (dark tones) and the highlight color (light tones). The result is a JPEG saved alongside the original. No CSS filters are used anywhere; the `<img>` tag just references the baked file.
+The effect is baked directly into the image file using Node + sharp — pixel by pixel. Each pixel is converted to grayscale, then linearly interpolated between the shadow color (dark tones) and the highlight color (light tones). The result is a JPEG saved alongside the original. No CSS filters are used anywhere.
 
 CSS blend mode approaches were tried and rejected — they produced oversaturated color and incorrect highlights compared to the baked result.
 
-### Workflow for new hero images
+### How to apply to an article
 
 1. Upload the original photo via the CMS as normal. It lands in `public/images/`.
 2. Tell Claude the filename. Claude runs the bake script and produces `filename-cherry.jpeg` in the same folder.
@@ -108,14 +110,14 @@ async function run() {
 run().catch(console.error);
 ```
 
-### Existing baked hero images
+### Baked files on disk (not currently in use)
 
-| Original | Baked version | Used in |
-|---|---|---|
-| `PSG-crosswalk-paris.jpeg` | `PSG-cherry-final.jpeg` | Homepage hero |
-| `bar-etna-at-open.jpeg` | `bar-etna-at-open-cherry.jpeg` | Wine Bar Hunting in Paris |
-| `meunier-at-bubble-bliss.jpeg` | `meunier-at-bubble-bliss-cherry.jpeg` | Chardonnay demo post |
-| `squating-in-field.jpeg` | `squating-in-field-cherry.jpeg` | Hello World |
+| Original | Baked version |
+|---|---|
+| `PSG-crosswalk-paris.jpeg` | `PSG-cherry-final.jpeg` |
+| `bar-etna-at-open.jpeg` | `bar-etna-at-open-cherry.jpeg` |
+| `meunier-at-bubble-bliss.jpeg` | `meunier-at-bubble-bliss-cherry.jpeg` |
+| `squating-in-field.jpeg` | `squating-in-field-cherry.jpeg` |
 
 ---
 
