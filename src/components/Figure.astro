@@ -25,7 +25,9 @@ const { src, alt, layout = 'inset', aspect, label, caption } = Astro.props;
 
 <figure
   class={`fig fig--${layout}`}
-  style={(layout === 'float-left' || layout === 'float-right') ? 'margin-top: 0.25rem; margin-bottom: 0.5rem;' : undefined}
+  style={(layout === 'float-left' || layout === 'float-right')
+    ? 'margin-top: 0.25rem; margin-bottom: 0.5rem;'
+    : undefined}
 >
   <img
     src={src}
@@ -90,6 +92,16 @@ const { src, alt, layout = 'inset', aspect, label, caption } = Astro.props;
     margin-inline: -10vw;
   }
 }
+
+/*
+ * FLOAT MARGINS — DO NOT move these to CSS.
+ * The base .fig rule uses margin-block (logical property) which shares the
+ * same specificity as .fig--float-* after Astro's scope attribute is applied.
+ * CSS changes here have no reliable effect. Margins are set via inline style
+ * on the <figure> element instead, where inline always wins the cascade.
+ * Current values: margin-top 0.25rem (aligns photo top with adjacent paragraph),
+ * margin-bottom 0.5rem (tightens text wrap below caption).
+ */
 
 /* ---- FLOAT LEFT ---- */
 .fig--float-left {
