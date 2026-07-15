@@ -133,4 +133,24 @@ run().catch(console.error);
 
 ## Corner Radius
 
-A consistent `6px` radius is used across all UI elements: category tags, newsletter input, newsletter button. Favicon uses `~22%` of its pixel size as the corner radius.
+A consistent `6px` radius is used across most UI elements: category tags, newsletter input, newsletter button. Favicon uses `~22%` of its pixel size as the corner radius.
+
+**Exception — The Bottle block** (`src/components/Bottle.astro`) uses a `1.25rem` (20px) card radius and a full pill (`999px`) for its price tag. This is a deliberate departure, not an inconsistency — the larger radius and pill shape read as a distinct "callout" register against the sharper-edged tags used elsewhere. `.bottle { clear: both; }` is also load-bearing — since the block can land anywhere in an article, including right after a floated image, it must always force itself onto a fresh line rather than trusting the surrounding content to clear its own floats.
+
+---
+
+## The Bottle Block
+
+An inline raised card used within article body content (via `<Bottle ... />` in the MDX source, alongside `<Figure>` and `<TwoUp>`) to call out a specific bottle.
+
+| Element | Treatment |
+|---|---|
+| Card | Deep Cream surface, `35%` petrol border, `1.25rem` radius, always clears floats |
+| Eyebrow label | "THE BOTTLE," small caps, petrol |
+| Price tag | Hot-pink pill, top-right — shows the price BAND (e.g. "About $22 · weeknight"), not a score or a verdict. Write the approximation as a word ("About"), never a symbol (`~`/`≈`) — stacked against the `$` it reads as visual clutter. For the occasion word, use wine-writing shorthand like "weeknight" or "special occasion" — avoid "everyday," which reads like retail/discount copy. This is the card's one loud element on purpose: it's Maxwell being upfront about cost and use-occasion, which is the actual value being offered to the reader. |
+| Bottle name | Fraunces 700, cherry, moderate size — the color and serif carry the distinction, not scale |
+| Meta line | Region · grape, muted ink, one line (price lives in the tag above, not here) |
+| "Pour it with" | Two-column row — petrol label (vertically centered against however many lines the pairing text wraps to), pairing text in a color between ink and muted-ink |
+| Footer | Hairline rule, then "Find a bottle →" link (petrol) and a small affiliate disclosure line, split left/right |
+
+**Rule: no numeric scores or points, ever.** There is no field for one — this is enforced by the component's props, not just convention.

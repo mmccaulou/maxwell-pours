@@ -1,0 +1,210 @@
+---
+/**
+ * Bottle — "The Bottle" block. An inline raised card for calling out
+ * a specific bottle within an article body. No numeric scores, ever.
+ *
+ * Props:
+ *   name       — bottle name (required)
+ *   grape      — grape/blend, e.g. "Chenin Blanc" (optional)
+ *   region     — region/appellation, including the full country name spelled
+ *                out (not abbreviated), e.g. "Savennières, Loire, France"
+ *                (optional)
+ *   price      — price BAND, e.g. "About $22 · weeknight" (required) — shown
+ *                as the hot-pink badge, not in the region/grape meta line.
+ *                Write the approximation in words ("About") rather than a
+ *                symbol (~ or ≈) — stacking a symbol against the $ reads as
+ *                clutter. For the occasion word, use wine-writing shorthand
+ *                like "weeknight" or "special occasion" — avoid "everyday,"
+ *                which reads like retail/discount copy.
+ *   pairing    — "Pour it with" line (optional)
+ *   link       — "Find a bottle" URL (optional)
+ *   disclosure — override the default affiliate disclosure line (optional)
+ */
+
+interface Props {
+  name: string;
+  grape?: string;
+  region?: string;
+  price: string;
+  pairing?: string;
+  link?: string;
+  disclosure?: string;
+}
+
+const {
+  name,
+  grape,
+  region,
+  price,
+  pairing,
+  link,
+  disclosure = 'Affiliate link — we may earn a small commission.',
+} = Astro.props;
+
+const metaLine = [region, grape].filter(Boolean).join(' · ');
+---
+
+<div class="bottle">
+  <div class="bottle__top">
+    <span class="bottle__label">The Bottle</span>
+    <span class="bottle__price-tag">{price}</span>
+  </div>
+
+  <div class="bottle__name">{name}</div>
+  {metaLine && <div class="bottle__meta">{metaLine}</div>}
+
+  {pairing && (
+    <div class="bottle__pairing">
+      <span class="bottle__pairing-label">Pour it with</span>
+      <span class="bottle__pairing-text">{pairing}</span>
+    </div>
+  )}
+
+  {link && (
+    <>
+      <div class="bottle__rule"></div>
+      <div class="bottle__foot">
+        <a href={link} class="bottle__link" rel="sponsored noopener" target="_blank">
+          Find a bottle →
+        </a>
+        <div class="bottle__disclosure">{disclosure}</div>
+      </div>
+    </>
+  )}
+</div>
+
+<style>
+.bottle {
+  clear: both;
+  background-color: var(--deep-cream);
+  border: 1.5px solid color-mix(in srgb, var(--petrol) 35%, transparent);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.75rem 1.625rem;
+  margin-block: 2.5rem;
+}
+
+.bottle__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  gap: 1rem;
+  margin-bottom: 1.125rem;
+}
+
+.bottle__label {
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--petrol);
+  padding-top: 0.3em;
+}
+
+.bottle__price-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lifted-cream);
+  background-color: var(--hot-pink);
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.bottle__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 700;
+  color: var(--cherry);
+  line-height: 1.2;
+  max-width: none;
+}
+
+.bottle__meta {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--muted-ink);
+  margin-top: 0.3rem;
+  max-width: none;
+}
+
+.bottle__pairing {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.125rem;
+}
+
+.bottle__pairing-label {
+  flex: 0 0 5.5rem;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--petrol);
+  line-height: 1.4;
+}
+
+.bottle__pairing-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: color-mix(in srgb, var(--ink) 50%, var(--muted-ink) 50%);
+  line-height: 1.55;
+  max-width: none;
+}
+
+.bottle__rule {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--petrol) 30%, transparent);
+  margin-top: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+
+.bottle__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.bottle__link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--petrol);
+  text-decoration: none;
+}
+.bottle__link:hover {
+  color: var(--cherry);
+}
+
+.bottle__disclosure {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--muted-ink);
+  text-align: right;
+  margin-left: auto;
+  max-width: none;
+}
+
+@media (max-width: 480px) {
+  .bottle__pairing {
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  .bottle__pairing-label {
+    flex-basis: auto;
+  }
+}
+</style>
