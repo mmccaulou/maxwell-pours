@@ -23,7 +23,10 @@ interface Props {
 const { src, alt, layout = 'inset', aspect, label, caption } = Astro.props;
 ---
 
-<figure class={`fig fig--${layout}`}>
+<figure
+  class={`fig fig--${layout}`}
+  style={(layout === 'float-left' || layout === 'float-right') ? 'margin-top: 0.25rem; margin-bottom: 0.5rem;' : undefined}
+>
   <img
     src={src}
     alt={alt}
