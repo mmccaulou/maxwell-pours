@@ -11,7 +11,7 @@ Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication
 | Name | Hex | Role |
 |---|---|---|
 | Petrol | `#0E6E70` | Masthead, nav, CTA bands, favicon background |
-| Cherry | `#B11E3C` | Article headlines, active nav, pull-quote marks, hero duotone |
+| Persimmon | `#E2542A` | Article headlines, active nav, link hover, The Bottle title |
 | Hot Pink | `#E84A8A` | Category tags, buttons, captions, tagline |
 | Lifted Cream | `#FAF3E5` | Page background, font on dark surfaces |
 | Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
@@ -148,7 +148,7 @@ An inline raised card used within article body content (via `<Bottle ... />` in 
 | Card | Deep Cream surface, `35%` petrol border, `1.25rem` radius, always clears floats |
 | Eyebrow label | "THE BOTTLE," small caps, petrol |
 | Price tag | Hot-pink pill, top-right — shows the price BAND (e.g. "About $22 · weeknight"), not a score or a verdict. Write the approximation as a word ("About"), never a symbol (`~`/`≈`) — stacked against the `$` it reads as visual clutter. For the occasion word, use wine-writing shorthand like "weeknight" or "special occasion" — avoid "everyday," which reads like retail/discount copy. This is the card's one loud element on purpose: it's Maxwell being upfront about cost and use-occasion, which is the actual value being offered to the reader. |
-| Bottle name | Fraunces 700, cherry, moderate size — the color and serif carry the distinction, not scale |
+| Bottle name | Fraunces 700, persimmon, moderate size — the color and serif carry the distinction, not scale |
 | Meta line | Region · grape, muted ink, one line (price lives in the tag above, not here) |
 | "Pour it with" | Two-column row — petrol label (vertically centered against however many lines the pairing text wraps to), pairing text in a color between ink and muted-ink |
 | Footer | Hairline rule, then "Find a bottle →" link (petrol) and a small affiliate disclosure line, split left/right |

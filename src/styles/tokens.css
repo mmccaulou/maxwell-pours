@@ -15,9 +15,9 @@
   --petrol-wash:  #0e6e700f;        /* 6% tint for soft section washes */
 
   /* Co-star: hero duotone, headlines, feature sections */
-  --cherry:       #B11E3C;
-  --cherry-hover: #8f1830;
-  --cherry-wash:  #b11e3c0a;
+  --persimmon:       #E2542A;
+  --persimmon-hover: #b04221;
+  --persimmon-wash:  #e2542a0f;
 
   /* Frequent-but-small: tags, buttons, pull-quote marks, hovers */
   --hot-pink:       #E84A8A;
