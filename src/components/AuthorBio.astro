@@ -1,0 +1,68 @@
+---
+// Author bio — shown at the foot of articles and the Work With Me page.
+---
+
+<aside class="author-bio container">
+  <div class="bio">
+    <img
+      src="/images/moscato-day-tuxedo.jpeg"
+      alt="Maxwell"
+      class="bio__photo"
+    />
+    <div class="bio__text">
+      <p class="bio__name">Maxwell McCaulou</p>
+      <p class="bio__copy">
+        Maxwell is a Wine Director and wine writer based in the Pacific Northwest.
+        He is currently buried in flashcards while preparing for the Advanced exam with the
+        Court of Master Sommeliers. His favorite beverages are salsa, bubbles, iced espresso
+        with an orange twist, and any Mexican-owned Blanco spirit, not necessarily in that
+        order. Off the clock, he loves to read about psychology and exercise however the
+        Seattle weather allows.
+      </p>
+    </div>
+  </div>
+</aside>
+
+<style>
+.author-bio {
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--deep-cream);
+  max-width: var(--prose-width);
+}
+
+@media (min-width: 768px) {
+  .author-bio {
+    max-width: clamp(44rem, 68vw, 64rem);
+  }
+}
+
+.bio {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.bio__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+}
+
+.bio__name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.375rem;
+}
+
+.bio__copy {
+  font-size: 0.9375rem;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  max-width: 52ch;
+}
+</style>

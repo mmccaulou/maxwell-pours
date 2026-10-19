@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import AuthorBio from '../components/AuthorBio.astro';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 ---
@@ -262,27 +263,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   </section>
 
   <!-- =====================================================
-       ABOUT
-       ===================================================== -->
-  <section class="ww-about">
-    <div class="container ww-about__inner">
-      <h2>About Maxwell</h2>
-      <div class="ww-about__row">
-        <div class="ww-about__photo" role="img" aria-label="Headshot placeholder">
-          <span>[PLACEHOLDER]</span>
-        </div>
-        <p class="ww-about__copy">
-          I'm Maxwell McCaulou, a Certified Sommelier (Court of Master Sommeliers) and Advanced
-          candidate with eight years running Seattle beverage programs, from a neighborhood wine
-          bar I built from scratch to a fine-dining list doing over a million a year. Before
-          wine, I managed a $3M Suitsupply store and trained in tailoring in New York. That's
-          still how I work: measure the room, respect the budget, and build something that fits.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================
        CONTACT FORM
        ===================================================== -->
   <section class="ww-contact" id="contact-form">
@@ -360,6 +340,8 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
       </form>
     </div>
   </section>
+
+  <AuthorBio />
 
 </Base>
 
@@ -759,55 +741,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   opacity: 0.78;
   margin-top: 1rem;
   max-width: none;
-}
-
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
-
-.ww-about { padding-block: 3rem; }
-
-.ww-about__inner { max-width: var(--prose-width); }
-
-.ww-about__inner h2 { margin-bottom: 1.5rem; }
-
-.ww-about__row {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-@media (min-width: 640px) {
-  .ww-about__row { flex-direction: row; }
-}
-
-.ww-about__photo {
-  flex-shrink: 0;
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  background-color: var(--deep-cream);
-  border: 1px dashed var(--petrol);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.ww-about__photo span {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--petrol);
-}
-
-.ww-about__copy {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--ink);
-  max-width: 56ch;
 }
 
 
