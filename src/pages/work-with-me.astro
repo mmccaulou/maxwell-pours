@@ -45,15 +45,12 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
        ===================================================== -->
   <section class="ww-proof">
     <div class="container">
-      <p class="ww-proof__line">
-        Directed multiple million-dollar wine programs
-        <span aria-hidden="true">·</span>
-        $34k in profit recovered through smarter buying
-        <span aria-hidden="true">·</span>
-        30% reduction in inventory shown in 9 months
-        <span aria-hidden="true">·</span>
-        Built a wine bar named among Seattle's best
-      </p>
+      <ul class="ww-proof__list">
+        <li>Directed multiple <span class="nowrap">million-dollar</span> wine programs</li>
+        <li>$34k in profit recovered through smarter buying</li>
+        <li>30% reduction in inventory shown in 9 months</li>
+        <li>Built a wine bar named among Seattle's best</li>
+      </ul>
     </div>
   </section>
 
@@ -486,17 +483,49 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   padding-block: 1.5rem;
 }
 
-.ww-proof__line {
+/* Each achievement is its own cell, so wrapping happens inside an item,
+   never midway through the row. Phones: stacked. Tablet: 2×2. Desktop: 4 across. */
+.ww-proof__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ww-proof__list li {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 700;
   color: var(--petrol);
   text-align: center;
-  max-width: none;
-  line-height: 1.8;
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
-.ww-proof__line span { margin-inline: 0.6em; opacity: 0.5; }
+@media (min-width: 560px) {
+  .ww-proof__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .ww-proof__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .ww-proof__list li {
+    padding-inline: 1.25rem;
+    border-left: 1px solid color-mix(in srgb, var(--petrol) 25%, transparent);
+  }
+
+  .ww-proof__list li:first-child { border-left: none; }
+}
+
+.ww-proof__list .nowrap { white-space: nowrap; }
 
 
 /* ============================================================
