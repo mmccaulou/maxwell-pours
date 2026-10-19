@@ -504,6 +504,19 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   text-wrap: balance;
 }
 
+/* Phones: thin petrol rule between stacked items, echoing the desktop dividers */
+@media (max-width: 559px) {
+  .ww-proof__list { gap: 0; }
+
+  .ww-proof__list li {
+    padding-block: 0.75rem;
+    border-top: 1px solid color-mix(in srgb, var(--petrol) 25%, transparent);
+  }
+
+  .ww-proof__list li:first-child { border-top: none; padding-top: 0; }
+  .ww-proof__list li:last-child { padding-bottom: 0; }
+}
+
 @media (min-width: 560px) {
   .ww-proof__list {
     grid-template-columns: repeat(2, 1fr);
