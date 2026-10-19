@@ -81,23 +81,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
           <h3 class="ww-track__title">Restaurants &amp; Wine Bars</h3>
           <p class="ww-track__tagline">From opening day to a million a year.</p>
 
-          <div class="ww-card ww-card--free">
-            <span class="ww-card__badge">Free</span>
-            <h4 class="ww-card__title">Wine List Review</h4>
-            <p class="ww-card__desc">
-              Send me your list. I'll walk you through what I find on a 30–45 minute call or
-              visit. Includes:
-            </p>
-            <ul class="ww-card__list">
-              <li>a snapshot of your list's structure and balance</li>
-              <li>a markup spot-check against retail</li>
-              <li>a read on your by-the-glass program</li>
-              <li>an accuracy and design pass</li>
-              <li>your top three opportunities, ranked by impact</li>
-              <li>one quick win you can act on tomorrow</li>
-            </ul>
-          </div>
-
           <div class="ww-card">
             <h4 class="ww-card__title">New Wine Program</h4>
             <p class="ww-card__desc">
@@ -121,27 +104,16 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               updates, inventory, and ongoing staff training.
             </p>
           </div>
+
+          <a href="#contact-form" class="ww-track__start" data-preselect="Wine List Review: restaurant">
+            Start with a free Wine List Review <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
 
         <!-- Private Cellars -->
         <div class="ww-track">
           <h3 class="ww-track__title">Private Cellars</h3>
           <p class="ww-track__tagline">For collectors who want to drink their cellar, not just store it.</p>
-
-          <div class="ww-card ww-card--free">
-            <span class="ww-card__badge">Free</span>
-            <h4 class="ww-card__title">Private Cellar Review</h4>
-            <p class="ww-card__desc">
-              A 60-minute visit to your cellar, wherever it lives. Includes:
-            </p>
-            <ul class="ww-card__list">
-              <li>a storage check (temperature, humidity, light, vibration)</li>
-              <li>an organization assessment</li>
-              <li>a "drink these soon" list</li>
-              <li>gaps and strengths, based on what you actually love to drink</li>
-              <li>a recommended next step</li>
-            </ul>
-          </div>
 
           <div class="ww-card">
             <h4 class="ww-card__title">New Cellar Design</h4>
@@ -167,6 +139,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               allocations and buying. Dinner pairings and event service on request.
             </p>
           </div>
+
+          <a href="#contact-form" class="ww-track__start" data-preselect="Private Cellar Review">
+            Start with a free Private Cellar Review <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
 
       </div>
@@ -270,6 +246,40 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         Tell me a little about your restaurant, bar, or cellar, and I'll be in touch within
         48 hours to set up a time.
       </p>
+
+      <div class="ww-reviews">
+        <div class="ww-card ww-card--free">
+          <span class="ww-card__badge">Free</span>
+          <h4 class="ww-card__title">Wine List Review</h4>
+          <p class="ww-card__desc">
+            Send me your list. I'll walk you through what I find on a 30–45 minute call or
+            visit. Includes:
+          </p>
+          <ul class="ww-card__list">
+            <li>a snapshot of your list's structure and balance</li>
+            <li>a markup spot-check against retail</li>
+            <li>a read on your by-the-glass program</li>
+            <li>an accuracy and design pass</li>
+            <li>your top three opportunities, ranked by impact</li>
+            <li>one quick win you can act on tomorrow</li>
+          </ul>
+        </div>
+
+        <div class="ww-card ww-card--free">
+          <span class="ww-card__badge">Free</span>
+          <h4 class="ww-card__title">Private Cellar Review</h4>
+          <p class="ww-card__desc">
+            A 60-minute visit to your cellar, wherever it lives. Includes:
+          </p>
+          <ul class="ww-card__list">
+            <li>a storage check (temperature, humidity, light, vibration)</li>
+            <li>an organization assessment</li>
+            <li>a "drink these soon" list</li>
+            <li>gaps and strengths, based on what you actually love to drink</li>
+            <li>a recommended next step</li>
+          </ul>
+        </div>
+      </div>
 
       <form
         class="ww-form"
@@ -593,18 +603,30 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   max-width: none;
 }
 
+.ww-track__start {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--hot-pink);
+  text-decoration: none;
+  margin-top: 0.25rem;
+}
+.ww-track__start:hover { color: var(--hot-pink-hover); text-decoration: underline; text-underline-offset: 3px; }
+.ww-track__start:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
+
 .ww-card {
   background-color: var(--lifted-cream);
-  border: 1px solid var(--deep-cream);
+  border: 1.5px solid color-mix(in srgb, var(--petrol) 20%, transparent);
   border-radius: 6px;
   padding: 1.5rem;
   margin-bottom: 1.25rem;
 }
 
 .ww-card--free {
-  background-color: var(--deep-cream);
+  background-color: var(--lifted-cream);
   border: 1.5px solid color-mix(in srgb, var(--petrol) 35%, transparent);
-  position: relative;
+  margin-bottom: 0;
 }
 
 .ww-card__badge {
@@ -797,7 +819,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   margin-top: 2rem;
 }
 
-.ww-contact__inner { max-width: 36rem; }
+.ww-contact__inner { max-width: 56rem; }
 
 .ww-contact__inner h2 { margin-bottom: 0.75rem; }
 
@@ -806,10 +828,22 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   color: var(--muted-ink);
   line-height: 1.6;
   margin-bottom: 2rem;
-  max-width: none;
+  max-width: 36rem;
+}
+
+.ww-reviews {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .ww-reviews { grid-template-columns: repeat(2, 1fr); }
 }
 
 .ww-form {
+  max-width: 36rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
