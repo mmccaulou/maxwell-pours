@@ -4,6 +4,15 @@
 
 Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication name is always "Maxwell Pours." The author's name is always "Maxwell McCaulou" in full — except inside the author bio card at the foot of articles, where first name only ("Maxwell") is used.
 
+### Periods in headings and subtitles
+
+Punctuate sentences; don't punctuate labels.
+
+- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Honest pours. No points.", "Let's get into wine worth drinking.", "Start with a review.", "From opening day to a million a year."
+- **Labels get no period.** Headings that simply name a section, category, or service: "How It Works", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Rebuild".
+- **Exception: article titles get no period**, even when they read as a sentence, following standard publication practice.
+- Buttons and links never take a period ("Request my review").
+
 ---
 
 ## Color Palette
