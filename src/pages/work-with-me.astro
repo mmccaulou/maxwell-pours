@@ -85,7 +85,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         <div class="ww-tiers">
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">From scratch</p>
-            <h4 class="ww-card__title">Wine Program Design</h4>
+            <h4 class="ww-card__title">Wine Program <span class="ww-tier__key">Design</span></h4>
             <p class="ww-card__desc">
               Launching a restaurant or wine bar? I build the program from the ground up: list,
               buying plan, pricing, menu design, and staff training, ready for opening night.
@@ -95,7 +95,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">Already open</p>
-            <h4 class="ww-card__title">Wine Program Revival</h4>
+            <h4 class="ww-card__title">Wine Program <span class="ww-tier__key">Revival</span></h4>
             <p class="ww-card__desc">
               Program costing too much or selling too little? I fix the numbers, give the list an
               identity, and retrain the team to sell it.
@@ -105,7 +105,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">Year-round</p>
-            <h4 class="ww-card__title">Wine Program Stewardship</h4>
+            <h4 class="ww-card__title">Wine Program <span class="ww-tier__key">Stewardship</span></h4>
             <p class="ww-card__desc">
               A sommelier without the salary. I handle buying, list updates, inventory, and
               ongoing staff training.
@@ -129,7 +129,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         <div class="ww-tiers">
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">From scratch</p>
-            <h4 class="ww-card__title">Cellar Design</h4>
+            <h4 class="ww-card__title">Cellar <span class="ww-tier__key">Design</span></h4>
             <p class="ww-card__desc">
               Starting a collection or building a space? Storage and racking sized to your goals,
               a collecting strategy built around your palate, and help getting onto the mailing
@@ -140,7 +140,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">Already collecting</p>
-            <h4 class="ww-card__title">Cellar Revival</h4>
+            <h4 class="ww-card__title">Cellar <span class="ww-tier__key">Revival</span></h4>
             <p class="ww-card__desc">
               Your full inventory cataloged and mapped, bottles organized the way you actually
               drink them, and a drinking-window plan so nothing passes its peak.
@@ -150,7 +150,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
           <div class="ww-card ww-tier">
             <p class="ww-tier__fit">Year-round</p>
-            <h4 class="ww-card__title">Cellar Stewardship</h4>
+            <h4 class="ww-card__title">Cellar <span class="ww-tier__key">Stewardship</span></h4>
             <p class="ww-card__desc">
               Regular visits, new arrivals logged, drinking-window alerts, and help with
               allocations and buying. Dinner pairings and event service on request.
@@ -680,6 +680,12 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-tier .ww-card__desc { margin-bottom: 1.25rem; }
+
+/* Hot pink on deep cream is ~3:1, which only passes as large text,
+   so tier titles sit just over the 18.66px bold threshold. */
+.ww-tier .ww-card__title { font-size: 1.1875rem; }
+
+.ww-tier__key { color: var(--hot-pink); }
 
 .ww-card--free {
   background-color: var(--lifted-cream);
