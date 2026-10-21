@@ -8,7 +8,7 @@ Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication
 
 Punctuate sentences; don't punctuate labels.
 
-- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Honest pours. No points.", "Let's get into wine worth drinking.", "Start with a review.", "From opening day to a million a year."
+- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Honest pours. No points.", "Let's get into wine worth drinking.", "Start with a review.", "For discerning owners and operators."
 - **Labels get no period.** Headings that simply name a section, category, or service: "How It Works", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Revival".
 - **Exception: article titles get no period**, even when they read as a sentence, following standard publication practice.
 - Buttons and links never take a period ("Request my review").
