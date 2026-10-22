@@ -9,19 +9,20 @@
 
   /* --- COLORS ------------------------------------------------ */
 
-  /* Lead: masthead, logo, nav, links, rules, CTA bands */
+  /* Primary (lead): masthead, logo, nav, links, rules, CTA bands */
   --petrol:       #0E6E70;
   --petrol-hover: #0a5254;          /* darkened for hover states */
   --petrol-wash:  #0e6e700f;        /* 6% tint for soft section washes */
 
-  /* Co-star: hero duotone, headlines, feature sections */
-  --persimmon:       #E2542A;
-  --persimmon-hover: #b04221;
-  --persimmon-wash:  #e2542a0f;
-
-  /* Frequent-but-small: tags, buttons, pull-quote marks, hovers */
+  /* Primary: tags, buttons, small pops */
   --hot-pink:       #E84A8A;
   --hot-pink-hover: #d03878;
+
+  /* Tertiary — RARE accent only: link hovers, active states, small
+     highlights. Cream text on plum; never plum on pink or vice versa. */
+  --plum:       #8E1E54;
+  --plum-hover: #701843;
+  --plum-wash:  #8e1e540f;
 
   /* Page foundation — the paper (no pure white anywhere) */
   --lifted-cream: #FAF3E5;

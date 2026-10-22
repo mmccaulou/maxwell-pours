@@ -298,7 +298,12 @@ const currentPath = Astro.url.pathname;
   transition: color 0.18s;
 }
 .site-nav a:hover { color: var(--hot-pink); }
-.site-nav a.is-active { color: var(--persimmon); }
+.site-nav a.is-active {
+  text-decoration: underline;
+  text-decoration-color: var(--hot-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
 .site-nav li:last-child a { border-bottom: none; }
 
 /* --- Work With Me: set apart from the category links ------- */
