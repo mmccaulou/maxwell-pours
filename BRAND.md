@@ -23,7 +23,7 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 |---|---|---|---|
 | Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, article and page headlines, The Bottle name, favicon background |
 | Primary | Hot Pink | `#E84A8A` | Small pops: category tags, buttons, captions, tagline, active-nav underline, "Free" card title |
-| Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me hero headline. Use it only where petrol or hot pink can't do the job |
+| Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me "problem" headline. Use it only where petrol or hot pink can't do the job |
 | Foundation | Lifted Cream | `#FAF3E5` | Page background, text on dark surfaces (including on plum and pink) |
 | Foundation | Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
 | Foundation | Ink | `#211318` | Body text and headlines on light backgrounds |
