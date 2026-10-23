@@ -21,12 +21,12 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 
 | Tier | Name | Hex | Role |
 |---|---|---|---|
-| Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, article headlines (Work With Me headlines are ink), The Bottle name, favicon background |
+| Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, The Bottle name, favicon background |
 | Primary | Hot Pink | `#E84A8A` | Small pops: category tags, buttons, captions, tagline, active-nav underline, "Free" card title |
 | Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me achievements banner (text and dividers). Use it only where petrol or hot pink can't do the job |
 | Foundation | Lifted Cream | `#FAF3E5` | Page background, text on dark surfaces (including on plum and pink) |
 | Foundation | Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
-| Foundation | Ink | `#211318` | Body text and headlines on light backgrounds |
+| Foundation | Ink | `#211318` | Body text and all page headlines on light backgrounds (article titles, Work With Me) |
 | Supporting | Muted Ink | `#5A4A48` | Captions, metadata, secondary text |
 
 **Derived states** (in `src/styles/tokens.css`): `--petrol-hover #0a5254`, `--petrol-wash`, `--hot-pink-hover #d03878`, `--plum-hover #701843`, `--plum-wash`.
@@ -35,7 +35,7 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 - No pure white (`#fff`) anywhere. Use Lifted Cream instead.
 - Text on plum is Lifted Cream (7.7:1 contrast). Never put plum text on hot-pink tags, or pink text on plum.
 - Don't use plum on the petrol masthead: at 1.4:1 contrast it can't be read there. Active nav is marked with a hot-pink underline instead.
-- **Persimmon (`#E2542A`) was removed in October 2026.** Its old uses moved to petrol (headlines, Bottle name), plum (link hovers) or hot pink (small pops). Don't bring it back, or any orange or terracotta.
+- **Persimmon (`#E2542A`) was removed in October 2026.** Its old uses moved to ink (headlines), petrol (Bottle name), plum (link hovers) or hot pink (small pops). Don't bring it back, or any orange or terracotta.
 - **Cherry (`#B11E3C`) is not a UI color.** It survives only in the dormant duotone system below.
 
 ---
