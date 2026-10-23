@@ -4,19 +4,39 @@
 
 Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication name is always "Maxwell Pours." The author's name is always "Maxwell McCaulou" in full — except inside the author bio card at the foot of articles, where first name only ("Maxwell") is used.
 
+### Periods in headings and subtitles
+
+Punctuate sentences; don't punctuate labels.
+
+- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Honest pours. No points.", "Let's get into wine worth drinking.", "Start with a review.", "For restaurateurs in search of the right list."
+- **Labels get no period.** Headings that simply name a section, category, or service: "How It Works", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Revival".
+- **Exception: article titles get no period**, even when they read as a sentence, following standard publication practice.
+- Buttons and links never take a period ("Request my review").
+
 ---
 
 ## Color Palette
 
-| Name | Hex | Role |
-|---|---|---|
-| Petrol | `#0E6E70` | Masthead, nav, CTA bands, favicon background |
-| Persimmon | `#E2542A` | Article headlines, active nav, link hover, The Bottle title |
-| Hot Pink | `#E84A8A` | Category tags, buttons, captions, tagline |
-| Lifted Cream | `#FAF3E5` | Page background, font on dark surfaces |
-| Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
-| Ink | `#211318` | Body text and headlines on light backgrounds |
-| Muted Ink | `#5A4A48` | Captions, metadata, secondary text |
+The system is locked. Don't add base colors; hover and wash shades are derived from the colors below.
+
+| Tier | Name | Hex | Role |
+|---|---|---|---|
+| Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, The Bottle name, favicon background |
+| Primary | Hot Pink | `#E84A8A` | Small pops: category tags, buttons, captions, tagline, active-nav underline, "Free" card title |
+| Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me achievements banner (text and dividers), Work With Me "How It Works" step circles (cream numbers on plum). Use it only where petrol or hot pink can't do the job |
+| Foundation | Lifted Cream | `#FAF3E5` | Page background, text on dark surfaces (including on plum and pink) |
+| Foundation | Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
+| Foundation | Ink | `#211318` | Body text and all page headlines on light backgrounds (article titles, Work With Me) |
+| Supporting | Muted Ink | `#5A4A48` | Captions, metadata, secondary text |
+
+**Derived states** (in `src/styles/tokens.css`): `--petrol-hover #0a5254`, `--petrol-wash`, `--hot-pink-hover #d03878`, `--plum-hover #701843`, `--plum-wash`.
+
+**Rules**
+- No pure white (`#fff`) anywhere. Use Lifted Cream instead.
+- Text on plum is Lifted Cream (7.7:1 contrast). Never put plum text on hot-pink tags, or pink text on plum.
+- Don't use plum on the petrol masthead: at 1.4:1 contrast it can't be read there. Active nav is marked with a hot-pink underline instead.
+- **Persimmon (`#E2542A`) was removed in October 2026.** Its old uses moved to ink (headlines), petrol (Bottle name), plum (link hovers) or hot pink (small pops). Don't bring it back, or any orange or terracotta.
+- **Cherry (`#B11E3C`) is not a UI color.** It survives only in the dormant duotone system below.
 
 ---
 
@@ -44,7 +64,7 @@ Fraunces is loaded from Google Fonts. The variable font (wght axis + opsz axis) 
 
 ## Duotone — Optional Artistic Treatment
 
-> **Current status: not in use.** All hero images run full-color. Duotone is available as a deliberate per-article choice for artistic effect.
+> **Current status: not in use.** All hero images run full-color. The cherry tones below are used only for duotone image color. They aren't UI colors, so don't use them for text, borders or buttons. Duotone is available as a deliberate per-article choice for artistic effect.
 
 The homepage card hover also has a built-in color-reveal: if a `-cherry` version is referenced in `heroImage`, the card fades from duotone to full color on hover. This is inert when full-color images are used.
 
@@ -148,9 +168,9 @@ An inline raised card used within article body content (via `<Bottle ... />` in 
 | Card | Deep Cream surface, `35%` petrol border, `1.25rem` radius, always clears floats |
 | Eyebrow label | "THE BOTTLE," small caps, petrol |
 | Price tag | Hot-pink pill, top-right — shows the price BAND (e.g. "About $22 · weeknight"), not a score or a verdict. Write the approximation as a word ("About"), never a symbol (`~`/`≈`) — stacked against the `$` it reads as visual clutter. For the occasion word, use wine-writing shorthand like "weeknight" or "special occasion" — avoid "everyday," which reads like retail/discount copy. This is the card's one loud element on purpose: it's Maxwell being upfront about cost and use-occasion, which is the actual value being offered to the reader. |
-| Bottle name | Fraunces 700, persimmon, moderate size — the color and serif carry the distinction, not scale |
+| Bottle name | Fraunces 700, petrol, moderate size — the color and serif carry the distinction, not scale |
 | Meta line | Region · grape, muted ink, one line (price lives in the tag above, not here) |
 | "Pour it with" | Two-column row — petrol label (vertically centered against however many lines the pairing text wraps to), pairing text in a color between ink and muted-ink |
-| Footer | Hairline rule, then "Find a bottle →" link (petrol) and a small affiliate disclosure line, split left/right |
+| Footer | Hairline rule, then "Find a bottle →" link (petrol, plum on hover) and a small affiliate disclosure line, split left/right |
 
 **Rule: no numeric scores or points, ever.** There is no field for one — this is enforced by the component's props, not just convention.

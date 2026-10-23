@@ -143,6 +143,14 @@ When in doubt, use INSET. It's always clean.
 
 ---
 
+## Site colors at a glance
+
+You never set colors when publishing; the site applies them automatically. For reference:
+
+- **Petrol** `#0E6E70` and **Hot Pink** `#E84A8A` are the two primaries.
+- **Plum** `#8E1E54` is the rare third accent (link hovers, small highlights).
+- Persimmon (orange) has been removed. Full spec is in `BRAND.md`.
+
 ## Mobile
 
 You don't need to do anything differently for mobile. Every layout adapts automatically:
