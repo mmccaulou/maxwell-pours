@@ -21,7 +21,7 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 
 | Tier | Name | Hex | Role |
 |---|---|---|---|
-| Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, article and page headlines, The Bottle name, favicon background |
+| Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, article headlines (Work With Me headlines are ink), The Bottle name, favicon background |
 | Primary | Hot Pink | `#E84A8A` | Small pops: category tags, buttons, captions, tagline, active-nav underline, "Free" card title |
 | Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me achievements banner (text and dividers). Use it only where petrol or hot pink can't do the job |
 | Foundation | Lifted Cream | `#FAF3E5` | Page background, text on dark surfaces (including on plum and pink) |
