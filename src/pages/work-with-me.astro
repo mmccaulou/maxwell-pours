@@ -91,7 +91,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               list, menu design, pricing, buying plan, and staff training are handled so you can
               focus on opening your doors.
             </p>
-            <p class="ww-tier__terms">One-time project</p>
+            <div class="ww-tier__terms">
+              <span>One-time project</span>
+              <span class="ww-tier__price">From <strong>$3,500</strong></span>
+            </div>
           </div>
 
           <div class="ww-card ww-tier">
@@ -101,7 +104,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               Is your wine program costing too much or selling too little? I pair passion with
               profitability, and then train your team to sell it.
             </p>
-            <p class="ww-tier__terms">One-time project</p>
+            <div class="ww-tier__terms">
+              <span>One-time project</span>
+              <span class="ww-tier__price">From <strong>$2,500</strong></span>
+            </div>
           </div>
 
           <div class="ww-card ww-tier">
@@ -112,9 +118,16 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               coordinate seasonal updates, and develop a curriculum based on your staff's
               educational needs.
             </p>
-            <p class="ww-tier__terms">Monthly retainer</p>
+            <div class="ww-tier__terms">
+              <span>Monthly retainer</span>
+              <span class="ww-tier__price">From <strong>$1,500</strong>/month</span>
+            </div>
           </div>
         </div>
+
+        <p class="ww-track__note">
+          Final pricing depends on the size of your program and is quoted after your free review.
+        </p>
 
         <a href="#contact-form" class="btn btn--solid ww-track__start" data-preselect="Wine List Review: restaurant">
           Free Wine List Review
@@ -137,7 +150,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               about this industry. I'll help plan everything from storage and racking to a
               purchasing strategy that supports your palate and entertaining style.
             </p>
-            <p class="ww-tier__terms">One-time project</p>
+            <div class="ww-tier__terms">
+              <span>One-time project</span>
+              <span class="ww-tier__price">From <strong>$750</strong></span>
+            </div>
           </div>
 
           <div class="ww-card ww-tier">
@@ -148,7 +164,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               gets busy. I catalog and re-rack your entire collection, while developing an aging
               plan so you know when each bottle is at its peak.
             </p>
-            <p class="ww-tier__terms">One-time project</p>
+            <div class="ww-tier__terms">
+              <span>One-time project</span>
+              <span class="ww-tier__price">From <strong>$750</strong></span>
+            </div>
           </div>
 
           <div class="ww-card ww-tier">
@@ -160,9 +179,16 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
               pairing advice and drinking-window alerts. On request I'll even come to your
               dinner party and help you entertain!
             </p>
-            <p class="ww-tier__terms">Recurring visits</p>
+            <div class="ww-tier__terms">
+              <span>Recurring visits</span>
+              <span class="ww-tier__price">From <strong>$450</strong>/month</span>
+            </div>
           </div>
         </div>
+
+        <p class="ww-track__note">
+          Final pricing depends on the size of your collection and is quoted after your free review.
+        </p>
 
         <a href="#contact-form" class="btn btn--solid ww-track__start" data-preselect="Private Cellar Review">
           Free Private Cellar Review
@@ -611,6 +637,13 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
 .ww-track__head { margin-bottom: 1.5rem; }
 
+.ww-track__note {
+  font-size: 0.8125rem;
+  color: var(--muted-ink);
+  margin-top: -0.5rem;
+  margin-bottom: 1.25rem;
+}
+
 .ww-tiers {
   display: grid;
   grid-template-columns: 1fr;
@@ -673,6 +706,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-tier__terms {
+  display: flex;
+  flex-wrap: wrap;            /* phones: price drops under the label if the row is too tight */
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid color-mix(in srgb, var(--petrol) 20%, transparent);
@@ -682,6 +719,9 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   color: var(--ink);
   max-width: none;
 }
+
+.ww-tier__price { font-weight: 400; }
+.ww-tier__price strong { font-weight: 700; }
 
 .ww-tier .ww-card__desc { margin-bottom: 1.25rem; }
 
