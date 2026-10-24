@@ -8,7 +8,7 @@ Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication
 
 Punctuate sentences; don't punctuate labels.
 
-- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Honest pours. No points.", "Let's get into wine worth drinking.", "Start with a review.", "For restaurateurs in search of the right list."
+- **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Let's get into wine worth drinking.", "Start with a review.", "For restaurateurs in search of the right list."
 - **Labels get no period.** Headings that simply name a section, category, or service: "How It Works", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Revival".
 - **Exception: article titles get no period**, even when they read as a sentence, following standard publication practice.
 - Buttons and links never take a period ("Request my review").
@@ -37,6 +37,17 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 - Don't use plum on the petrol masthead: at 1.4:1 contrast it can't be read there. Active nav is marked with a hot-pink underline instead.
 - **Persimmon (`#E2542A`) was removed in October 2026.** Its old uses moved to ink (headlines), petrol (Bottle name), plum (link hovers) or hot pink (small pops). Don't bring it back, or any orange or terracotta.
 - **Cherry (`#B11E3C`) is not a UI color.** It survives only in the dormant duotone system below.
+
+---
+
+## Buttons
+
+Pink buttons (`.btn` in `src/styles/global.css`) come in two sizes:
+
+- **Medium (default):** every pink button on the site, including the review buttons under the service cards, the service page buttons and the form's "Request my review".
+- **Large (`.btn--large`):** only the two hero buttons at the top of Work With Me. Don't use large anywhere else.
+
+Styles: solid (hot pink fill, Lifted Cream text) or outline (hot pink border and text). Both darken to hot-pink-hover on hover.
 
 ---
 

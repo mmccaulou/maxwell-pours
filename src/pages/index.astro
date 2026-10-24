@@ -25,12 +25,11 @@ const categoryLabels: Record<string, string> = {
     <div class="hero__frame">
       <img
         class="hero__img"
-        src="/images/PSG-crosswalk-paris.jpeg"
-        alt="A Paris boulevard at golden hour, pedestrians crossing at a zebra crossing beneath tall trees"
+        src="/images/tasting-table-under-oak.jpeg"
+        alt="Bottles of wine lined up on a table beneath an old oak, with a vase of sunflowers and marigolds, and vineyards rolling toward distant hills"
       />
-      <div class="hero__content">
-        <h1 class="hero__headline">Honest pours.<br/>No points.</h1>
-      </div>
+      <!-- No visible headline: the photo carries the hero. The page still needs an h1. -->
+      <h1 class="sr-only">Maxwell Pours</h1>
     </div>
   </section>
 
@@ -144,44 +143,8 @@ const categoryLabels: Record<string, string> = {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 62%;   /* keep the flowers and bottles in frame on wide screens */
 }
-
-/* Text anchored to the bottom, readable via gradient */
-.hero__content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 3rem 1.5rem 2.5rem;
-  background: linear-gradient(
-    to top,
-    rgba(33, 19, 24, 0.72) 0%,
-    rgba(33, 19, 24, 0.3) 55%,
-    transparent 100%
-  );
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.875rem;
-}
-
-.hero__headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
-  font-weight: 800;
-  color: var(--lifted-cream);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  max-width: 16ch;
-}
-
-@media (min-width: 768px) {
-  .hero__content {
-    padding: 4rem 3rem 3rem;
-  }
-}
-
 
 /* ============================================================
    CATEGORY TAG  (reusable across the site)
