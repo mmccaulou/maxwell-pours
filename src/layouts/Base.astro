@@ -328,7 +328,9 @@ const currentPath = Astro.url.pathname;
   text-decoration: none;
   transition: background-color 0.18s;
 }
-.site-nav__cta:hover {
+/* .site-nav prefix needed: the generic `.site-nav a:hover` (pink text)
+   is more specific than a lone class and was turning this pink-on-pink. */
+.site-nav .site-nav__cta:hover {
   background-color: var(--hot-pink-hover);
   color: var(--lifted-cream);
 }
