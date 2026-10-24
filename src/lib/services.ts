@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 // Per-track settings shared by the /work-with-me cards and the service pages.
 // `interest` must match an <option> value in the contact form's select.
 export const tracks = {
-  restaurants: { cta: 'Free Wine List Review', interest: 'Wine List Review: restaurant' },
+  restaurants: { cta: 'Free Wine List Review', interest: 'Wine List Review: Restaurant' },
   cellars:     { cta: 'Free Private Cellar Review', interest: 'Private Cellar Review' },
 } as const;
 
