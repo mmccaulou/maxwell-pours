@@ -995,6 +995,21 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
 .ww-form textarea { resize: vertical; }
 
+/* Drop the browser's native select styling (which ignores padding) so it
+   matches the text inputs' height; draw our own petrol chevron instead. */
+.ww-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 3rem;                 /* same as the one-line text inputs (48px) */
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230E6E70' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  background-size: 12px 8px;
+  cursor: pointer;
+}
+
 .ww-form__submit {
   margin-top: 0.5rem;
   align-self: flex-start;
