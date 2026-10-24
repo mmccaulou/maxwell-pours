@@ -12,6 +12,7 @@ const posts = defineCollection({
     heroImage: z.string().optional(),
     category: z.enum(['in-the-glass', 'on-the-floor', 'at-the-table', 'off-the-map', 'punch-downs']).optional(),
     draft: z.boolean().optional().default(false),
+    featured: z.boolean().optional().default(false),   // pin to the homepage hero
   }),
 });
 

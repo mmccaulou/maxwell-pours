@@ -46,6 +46,24 @@ collections:
         name: draft
         widget: boolean
         default: false
+      - label: Feature on homepage
+        name: featured
+        widget: boolean
+        default: false
+        required: false
+        hint: "Shows this post over the homepage photo. If several are ticked, the newest wins; if none, the newest post is shown."
       - label: Body
         name: body
         widget: markdown
+
+  # Site-wide settings that aren't posts. Single files, not folders.
+  - name: settings
+    label: Site Settings
+    files:
+      - name: homepage
+        label: Homepage
+        file: src/data/homepage.json
+        fields:
+          - { label: Hero Photo, name: heroImage, widget: image, hint: "JPEG, about 1500–2500px wide and under 2 MB (photos are shown exactly as uploaded)" }
+          - { label: Photo Description, name: heroAlt, widget: string, hint: "What the photo shows, for screen readers and search engines" }
+          - { label: Photo Caption, name: heroCaption, widget: string, required: false, hint: "Small text in the corner of the photo. Leave blank to hide it." }
