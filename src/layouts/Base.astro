@@ -231,7 +231,7 @@ const currentPath = Astro.url.pathname;
   max-height: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .masthead--compact .masthead__inner {
     padding-block: 0.625rem 0;
   }
@@ -338,7 +338,7 @@ const currentPath = Astro.url.pathname;
 /* Phone menu: the generic `.site-nav a` rule (full-width block, row
    padding) out-ranks .site-nav__cta, turning it into a full-width slab.
    Restore a compact medium button with room beneath it. */
-@media (max-width: 767px) {
+@media (max-width: 959px) {
   .site-nav .site-nav__cta {
     display: inline-block;
     font-size: 0.75rem;
@@ -348,9 +348,11 @@ const currentPath = Astro.url.pathname;
   .site-nav__cta-item { padding-bottom: 1.25rem; }
 }
 
-/* --- Desktop ----------------------------------------------- */
+/* --- Desktop -----------------------------------------------
+   960px = the one-line nav row (~853px) + container padding + a little
+   air. Below that the row would wrap, so the hamburger menu takes over. */
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .masthead__inner {
     grid-template-areas:
       "brand"
@@ -404,6 +406,7 @@ const currentPath = Astro.url.pathname;
   .site-nav a {
     padding-block: 0;
     border-bottom: none;
+    white-space: nowrap;
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
