@@ -99,7 +99,6 @@ const currentPath = Astro.url.pathname;
 
   <footer class="site-footer">
     <div class="container">
-      <a href="/work-with-me/" class="site-footer__cta">Work With Me</a>
       <p class="site-footer__copy">
         &copy; {new Date().getFullYear()} Maxwell Pours
       </p>
@@ -407,23 +406,6 @@ const currentPath = Astro.url.pathname;
   padding-block: 2rem;
   margin-top: 4rem;
 }
-
-.site-footer__cta {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--lifted-cream);
-  background-color: var(--hot-pink);
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-bottom: 1.25rem;
-  transition: background-color 0.18s;
-}
-.site-footer__cta:hover { background-color: var(--hot-pink-hover); }
 
 .site-footer__copy {
   font-family: var(--font-body);
