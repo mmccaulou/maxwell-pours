@@ -40,6 +40,17 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 
 ---
 
+## Buttons
+
+Pink buttons (`.btn` in `src/styles/global.css`) come in two sizes:
+
+- **Medium (default):** every pink button on the site, including the review buttons under the service cards, the service page buttons and the form's "Request my review".
+- **Large (`.btn--large`):** only the two hero buttons at the top of Work With Me. Don't use large anywhere else.
+
+Styles: solid (hot pink fill, Lifted Cream text) or outline (hot pink border and text). Both darken to hot-pink-hover on hover.
+
+---
+
 ## Typography
 
 | Role | Font | Weight |
