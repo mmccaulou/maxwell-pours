@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects: old URL  new URL  status
+/posts/hello-world   /posts/about-my-journey/  301
+/posts/hello-world/  /posts/about-my-journey/  301
