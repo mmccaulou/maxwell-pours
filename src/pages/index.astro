@@ -7,9 +7,8 @@ const allPosts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Hero story: the newest post ticked "Feature on homepage" in the CMS,
-// otherwise simply the newest post. It's left out of the grid below.
+// otherwise simply the newest post. It still appears in the grid below.
 const featured = allPosts.find((p) => p.data.featured) ?? allPosts[0];
-const gridPosts = allPosts.filter((p) => p !== featured);
 
 // Category display labels
 const categoryLabels: Record<string, string> = {
@@ -62,7 +61,7 @@ const categoryLabels: Record<string, string> = {
     <div class="container">
       <h2 class="posts-section__heading">Recent Pours</h2>
       <div class="post-grid">
-        {gridPosts.map((post) => (
+        {allPosts.map((post) => (
           <article class="post-card">
             {post.data.heroImage && (
               <a href={`/posts/${post.id}/`} class="post-card__image-link" tabindex="-1" aria-hidden="true">
