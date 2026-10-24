@@ -1,9 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import homepage from '../data/homepage.json';
 
 const allPosts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Hero story: the newest post ticked "Feature on homepage" in the CMS,
+// otherwise simply the newest post. It's left out of the grid below.
+const featured = allPosts.find((p) => p.data.featured) ?? allPosts[0];
+const gridPosts = allPosts.filter((p) => p !== featured);
 
 // Category display labels
 const categoryLabels: Record<string, string> = {
@@ -23,13 +29,26 @@ const categoryLabels: Record<string, string> = {
        ===================================================== -->
   <section class="hero">
     <div class="hero__frame">
-      <img
-        class="hero__img"
-        src="/images/walter-scott-party.jpeg"
-        alt="Bottles of wine lined up on a table beneath an old oak, with a vase of sunflowers and marigolds, and vineyards rolling toward distant hills"
-      />
-      <!-- No visible headline: the photo carries the hero. The page still needs an h1. -->
+      <!-- Photo, alt text and caption are edited in the CMS (Homepage settings) -->
+      <img class="hero__img" src={homepage.heroImage} alt={homepage.heroAlt} />
       <h1 class="sr-only">Maxwell Pours</h1>
+
+      <div class="hero__overlay">
+        {featured && (
+          <div class="hero__story">
+            {featured.data.category && (
+              <span class="tag">{categoryLabels[featured.data.category]}</span>
+            )}
+            <h2 class="hero__title">
+              <a href={`/posts/${featured.id}/`} class="hero__link">{featured.data.title}</a>
+            </h2>
+            <span class="hero__read" aria-hidden="true">Read &rarr;</span>
+          </div>
+        )}
+        {homepage.heroCaption && (
+          <p class="hero__caption">{homepage.heroCaption}</p>
+        )}
+      </div>
     </div>
   </section>
 
@@ -43,7 +62,7 @@ const categoryLabels: Record<string, string> = {
     <div class="container">
       <h2 class="posts-section__heading">Recent Pours</h2>
       <div class="post-grid">
-        {allPosts.map((post) => (
+        {gridPosts.map((post) => (
           <article class="post-card">
             {post.data.heroImage && (
               <a href={`/posts/${post.id}/`} class="post-card__image-link" tabindex="-1" aria-hidden="true">
@@ -140,7 +159,9 @@ const categoryLabels: Record<string, string> = {
 
 @media (min-width: 768px) {
   .hero__frame {
-    height: 88svh;
+    /* minus the masthead (~7.5rem) so the featured story's bottom edge
+       sits inside the window and the next section peeks in */
+    height: calc(88svh - 7.5rem);
     min-height: 520px;
   }
 }
@@ -154,6 +175,88 @@ const categoryLabels: Record<string, string> = {
   object-fit: cover;
   object-position: center 45%;   /* keep the flowers and bottles in frame on wide screens */
 }
+
+/* Featured story + caption, over a soft ink fade at the bottom.
+   The title link stretches over the story block, so the whole block
+   (tag, title, Read) is one link. */
+.hero__overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem 1.25rem 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(33, 19, 24, 0.75) 0%,
+    rgba(33, 19, 24, 0.35) 60%,
+    transparent 100%
+  );
+}
+
+.hero__story {
+  position: relative;
+  max-width: 40rem;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--lifted-cream);
+  margin-block: 0.625rem 0.5rem;
+  max-width: 22ch;
+}
+
+.hero__link {
+  color: inherit;
+  text-decoration: none;
+}
+.hero__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.hero__link:focus-visible { outline: none; }
+.hero__link:focus-visible::after {
+  outline: 2px solid var(--lifted-cream);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.hero__read {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lifted-cream);
+  transition: color 0.18s;
+}
+.hero__story:hover .hero__read,
+.hero__story:hover .hero__title { color: var(--hot-pink); }
+
+.hero__caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--lifted-cream);
+  opacity: 0.85;
+  max-width: 32ch;
+}
+
+@media (min-width: 768px) {
+  .hero__overlay {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 6rem 3rem 2.5rem;
+  }
+  .hero__caption { text-align: right; }
+}
+
 
 /* ============================================================
    CATEGORY TAG  (reusable across the site)
