@@ -139,3 +139,12 @@ a:hover { color: var(--plum); }
   outline: 2px solid var(--petrol);
   outline-offset: 2px;
 }
+
+/* Between the category tags and the full buttons: reads as a tag,
+   but still a comfortable thumb target on phones */
+.btn--medium {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.75em 1.1em;
+  border: none;
+}
