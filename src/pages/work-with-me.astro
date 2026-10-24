@@ -24,14 +24,14 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
       <div class="ww-hero__ctas">
         <a
           href="#contact-form"
-          class="btn btn--solid"
+          class="btn btn--solid btn--large"
           data-preselect="Restaurant"
         >
           Request a Wine List Review
         </a>
         <a
           href="#contact-form"
-          class="btn btn--outline"
+          class="btn btn--outline btn--large"
           data-preselect="Private Cellar"
         >
           Request a Private Cellar Review
@@ -445,48 +445,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 </script>
 
 <style>
-/* ============================================================
-   SHARED BUTTON
-   ============================================================ */
-
-.btn {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.875rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1.5px solid var(--hot-pink);
-  transition: background-color 0.18s, color 0.18s;
-}
-
-.btn--solid {
-  background-color: var(--hot-pink);
-  color: var(--lifted-cream);
-}
-.btn--solid:hover {
-  background-color: var(--hot-pink-hover);
-  border-color: var(--hot-pink-hover);
-  color: var(--lifted-cream);
-}
-
-.btn--outline {
-  background-color: transparent;
-  color: var(--hot-pink);
-}
-.btn--outline:hover {
-  background-color: var(--hot-pink);
-  color: var(--lifted-cream);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--petrol);
-  outline-offset: 2px;
-}
+/* Pink .btn styles live in global.css. */
 
 
 /* ============================================================
@@ -666,15 +625,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   max-width: none;
 }
 
-/* Between the category tags and the full buttons: reads as a tag,
-   but still a comfortable thumb target on phones */
-.ww-track__start {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  padding: 0.75em 1.1em;
-  border: none;
-}
+.ww-track__start { margin-top: 0.25rem; }
 .ww-track__start:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
 
 .ww-card {
