@@ -97,3 +97,45 @@ a:hover { color: var(--plum); }
   white-space: nowrap;
   border: 0;
 }
+
+
+/* --- BUTTONS (hot pink) — Work With Me page + service pages ---- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.875rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid var(--hot-pink);
+  transition: background-color 0.18s, color 0.18s;
+}
+
+.btn--solid {
+  background-color: var(--hot-pink);
+  color: var(--lifted-cream);
+}
+.btn--solid:hover {
+  background-color: var(--hot-pink-hover);
+  border-color: var(--hot-pink-hover);
+  color: var(--lifted-cream);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--hot-pink);
+}
+.btn--outline:hover {
+  background-color: var(--hot-pink);
+  color: var(--lifted-cream);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+}

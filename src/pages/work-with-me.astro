@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import AuthorBio from '../components/AuthorBio.astro';
+import { getServices } from '../lib/services';
+
+const restaurantServices = await getServices('restaurants');
+const cellarServices = await getServices('cellars');
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 ---
@@ -83,46 +87,20 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         </div>
 
         <div class="ww-tiers">
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">From scratch</p>
-            <h4 class="ww-card__title">Wine Program Design</h4>
-            <p class="ww-card__desc">
-              Opening a new restaurant or bar? I build a program to reflect your vision. The
-              list, menu design, pricing, buying plan, and staff training are handled so you can
-              focus on opening your doors.
-            </p>
-            <div class="ww-tier__terms">
-              <span>One-time project</span>
-              <span class="ww-tier__price">From <strong>$3,500</strong></span>
+          {restaurantServices.map((service) => (
+            <div class="ww-card ww-tier">
+              <p class="ww-tier__fit">{service.data.tag}</p>
+              <h4 class="ww-card__title">
+                <a href={`/work-with-me/${service.id}/`} class="ww-tier__link">{service.data.title}</a>
+              </h4>
+              <p class="ww-card__desc">{service.data.blurb}</p>
+              <div class="ww-tier__terms">
+                <span>{service.data.billing}</span>
+                <span class="ww-tier__price">From <strong>{service.data.price}</strong>{service.data.priceUnit}</span>
+              </div>
+              <span class="ww-tier__more" aria-hidden="true">Learn more &rarr;</span>
             </div>
-          </div>
-
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">Already open</p>
-            <h4 class="ww-card__title">Wine Program Revival</h4>
-            <p class="ww-card__desc">
-              Is your wine program costing too much or selling too little? I pair passion with
-              profitability, and then train your team to sell it.
-            </p>
-            <div class="ww-tier__terms">
-              <span>One-time project</span>
-              <span class="ww-tier__price">From <strong>$2,500</strong></span>
-            </div>
-          </div>
-
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">Year-round</p>
-            <h4 class="ww-card__title">Wine Program Stewardship</h4>
-            <p class="ww-card__desc">
-              A Wine Director at a fraction of the cost. I place orders, manage inventory,
-              coordinate seasonal updates, and develop a curriculum based on your staff's
-              educational needs.
-            </p>
-            <div class="ww-tier__terms">
-              <span>Monthly retainer</span>
-              <span class="ww-tier__price">From <strong>$1,500</strong>/month</span>
-            </div>
-          </div>
+          ))}
         </div>
 
         <p class="ww-track__note">
@@ -142,48 +120,20 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         </div>
 
         <div class="ww-tiers">
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">From scratch</p>
-            <h4 class="ww-card__title">Cellar Design</h4>
-            <p class="ww-card__desc">
-              Working with people to develop their sense of taste is one of my favorite things
-              about this industry. I'll help plan everything from storage and racking to a
-              purchasing strategy that supports your palate and entertaining style.
-            </p>
-            <div class="ww-tier__terms">
-              <span>One-time project</span>
-              <span class="ww-tier__price">From <strong>$1,000</strong></span>
+          {cellarServices.map((service) => (
+            <div class="ww-card ww-tier">
+              <p class="ww-tier__fit">{service.data.tag}</p>
+              <h4 class="ww-card__title">
+                <a href={`/work-with-me/${service.id}/`} class="ww-tier__link">{service.data.title}</a>
+              </h4>
+              <p class="ww-card__desc">{service.data.blurb}</p>
+              <div class="ww-tier__terms">
+                <span>{service.data.billing}</span>
+                <span class="ww-tier__price">From <strong>{service.data.price}</strong>{service.data.priceUnit}</span>
+              </div>
+              <span class="ww-tier__more" aria-hidden="true">Learn more &rarr;</span>
             </div>
-          </div>
-
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">Already collecting</p>
-            <h4 class="ww-card__title">Cellar Revival</h4>
-            <p class="ww-card__desc">
-              The need for proper inventorying and organization doesn't fade away because life
-              gets busy. I catalog and re-rack your entire collection, while developing an aging
-              plan so you know when each bottle is at its peak.
-            </p>
-            <div class="ww-tier__terms">
-              <span>One-time project</span>
-              <span class="ww-tier__price">From <strong>$750</strong></span>
-            </div>
-          </div>
-
-          <div class="ww-card ww-tier">
-            <p class="ww-tier__fit">Year-round</p>
-            <h4 class="ww-card__title">Cellar Stewardship</h4>
-            <p class="ww-card__desc">
-              You've always wanted a Personal Sommelier. Regular visits for cellar upkeep,
-              logging new deliveries, and assistance with auctions and allocations. A direct line for
-              pairing advice and drinking-window alerts. On request I'll even come to your
-              dinner party and help you entertain!
-            </p>
-            <div class="ww-tier__terms">
-              <span>Monthly retainer</span>
-              <span class="ww-tier__price">From <strong>$450</strong>/month</span>
-            </div>
-          </div>
+          ))}
         </div>
 
         <p class="ww-track__note">
@@ -403,6 +353,13 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 </Base>
 
 <script>
+  // Arriving from a service page (?interest=…): preselect that option.
+  const interest = new URLSearchParams(window.location.search).get('interest');
+  const interestSelect = document.getElementById('interest') as HTMLSelectElement | null;
+  if (interest && interestSelect && [...interestSelect.options].some((o) => o.value === interest)) {
+    interestSelect.value = interest;
+  }
+
   // Hero CTAs: preselect the matching option in the contact form before scrolling.
   document.querySelectorAll<HTMLAnchorElement>('[data-preselect]').forEach((el) => {
     el.addEventListener('click', () => {
@@ -445,48 +402,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 </script>
 
 <style>
-/* ============================================================
-   SHARED BUTTON
-   ============================================================ */
-
-.btn {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.875rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1.5px solid var(--hot-pink);
-  transition: background-color 0.18s, color 0.18s;
-}
-
-.btn--solid {
-  background-color: var(--hot-pink);
-  color: var(--lifted-cream);
-}
-.btn--solid:hover {
-  background-color: var(--hot-pink-hover);
-  border-color: var(--hot-pink-hover);
-  color: var(--lifted-cream);
-}
-
-.btn--outline {
-  background-color: transparent;
-  color: var(--hot-pink);
-}
-.btn--outline:hover {
-  background-color: var(--hot-pink);
-  color: var(--lifted-cream);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--petrol);
-  outline-offset: 2px;
-}
+/* Shared .btn styles live in global.css (also used by the service pages). */
 
 
 /* ============================================================
@@ -718,6 +634,44 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   font-weight: 700;
   color: var(--ink);
   max-width: none;
+}
+
+/* Whole card is clickable: the title link's ::after stretches over the card,
+   so there's one link per card. Its focus ring outlines the full card. */
+.ww-tier {
+  position: relative;
+  transition: border-color 0.18s;
+}
+.ww-tier:hover { border-color: color-mix(in srgb, var(--petrol) 45%, transparent); }
+
+.ww-tier__link {
+  color: inherit;
+  text-decoration: none;
+}
+.ww-tier__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+}
+.ww-tier__link:focus-visible { outline: none; }
+.ww-tier__link:focus-visible::after {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+}
+
+.ww-tier:hover .ww-card__title,
+.ww-tier:hover .ww-tier__more,
+.ww-tier__link:focus-visible,
+.ww-tier:focus-within .ww-tier__more { color: var(--plum); }
+
+.ww-tier__more {
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--petrol);
+  transition: color 0.18s;
 }
 
 .ww-tier__price { font-weight: 400; }
