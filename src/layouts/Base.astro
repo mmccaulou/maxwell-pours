@@ -335,6 +335,19 @@ const currentPath = Astro.url.pathname;
   color: var(--lifted-cream);
 }
 
+/* Phone menu: the generic `.site-nav a` rule (full-width block, row
+   padding) out-ranks .site-nav__cta, turning it into a full-width slab.
+   Restore a compact medium button with room beneath it. */
+@media (max-width: 767px) {
+  .site-nav .site-nav__cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.75em 1.1em;
+  }
+  .site-nav__cta-item { padding-bottom: 1.25rem; }
+}
+
 /* --- Desktop ----------------------------------------------- */
 
 @media (min-width: 768px) {
