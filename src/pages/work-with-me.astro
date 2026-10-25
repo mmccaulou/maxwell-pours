@@ -251,40 +251,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
         48 hours to set up a time.
       </p>
 
-      <div class="ww-reviews">
-        <div class="ww-card ww-card--free">
-          <span class="ww-card__badge">Free</span>
-          <h4 class="ww-card__title">Wine List Review</h4>
-          <p class="ww-card__desc">
-            Send me your list. I'll walk you through what I find on a 30–45 minute call or
-            visit. Includes:
-          </p>
-          <ul class="ww-card__list">
-            <li>a snapshot of your list's structure and balance</li>
-            <li>a markup spot-check against retail</li>
-            <li>a read on your by-the-glass program</li>
-            <li>an accuracy and design pass</li>
-            <li>your top three opportunities, ranked by impact</li>
-            <li>one quick win you can act on tomorrow</li>
-          </ul>
-        </div>
-
-        <div class="ww-card ww-card--free">
-          <span class="ww-card__badge">Free</span>
-          <h4 class="ww-card__title">Private Cellar Review</h4>
-          <p class="ww-card__desc">
-            A 60-minute visit to your cellar, wherever it lives. Includes:
-          </p>
-          <ul class="ww-card__list">
-            <li>a storage check (temperature, humidity, light, vibration)</li>
-            <li>an organization assessment</li>
-            <li>a "drink these soon" list</li>
-            <li>gaps and strengths, based on what you actually love to drink</li>
-            <li>a recommended next step</li>
-          </ul>
-        </div>
-      </div>
-
       <form
         class="ww-form"
         action={FORMSPREE_ENDPOINT}
@@ -300,55 +266,108 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
           <input type="text" id="ww-company" name="_gotcha" tabindex="-1" autocomplete="off" />
         </div>
 
-        <div class="ww-form__row">
-          <label for="ww-name">Name <span aria-hidden="true">*</span></label>
-          <input type="text" id="ww-name" name="name" required autocomplete="name" />
+        <!-- Step 1: pick a review. Each card is a radio option; the fields
+             below adapt to the choice (see script). Without JS, all show. -->
+        <fieldset class="ww-pick">
+          <legend class="sr-only">Choose a review</legend>
+          <div class="ww-reviews">
+            <div class="ww-card ww-card--free ww-pick__card">
+              <label class="ww-pick__label">
+                <input type="radio" name="review" value="Wine List Review" class="ww-pick__radio" required />
+                <span class="ww-card__badge">Free</span>
+                <span class="ww-card__title">Wine List Review</span>
+                <span class="ww-card__desc">
+                  Send me your list. I'll walk you through what I find on a 30–45 minute call or
+                  visit.
+                </span>
+              </label>
+              <details class="ww-pick__details">
+                <summary>What's included</summary>
+                <ul class="ww-card__list">
+                  <li>a snapshot of your list's structure and balance</li>
+                  <li>a markup spot-check against retail</li>
+                  <li>a read on your by-the-glass program</li>
+                  <li>an accuracy and design pass</li>
+                  <li>your top three opportunities, ranked by impact</li>
+                  <li>one quick win you can act on tomorrow</li>
+                </ul>
+              </details>
+            </div>
+            <div class="ww-card ww-card--free ww-pick__card">
+              <label class="ww-pick__label">
+                <input type="radio" name="review" value="Private Cellar Review" class="ww-pick__radio" />
+                <span class="ww-card__badge">Free</span>
+                <span class="ww-card__title">Private Cellar Review</span>
+                <span class="ww-card__desc">
+                  A 60-minute visit to your cellar, wherever it lives.
+                </span>
+              </label>
+              <details class="ww-pick__details">
+                <summary>What's included</summary>
+                <ul class="ww-card__list">
+                  <li>a storage check (temperature, humidity, light, vibration)</li>
+                  <li>an organization assessment</li>
+                  <li>a "drink these soon" list</li>
+                  <li>gaps and strengths, based on what you actually love to drink</li>
+                  <li>a recommended next step</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+          <label class="ww-pick__other">
+            <input type="radio" name="review" value="Something else entirely" />
+            Something else entirely
+          </label>
+        </fieldset>
+
+        <div class="ww-form__fields">
+          <div class="ww-form__row">
+            <label for="ww-name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="ww-name" name="name" required autocomplete="name" />
+          </div>
+
+          <div class="ww-form__row">
+            <label for="ww-email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="ww-email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="ww-form__row">
+            <label for="ww-phone">Phone</label>
+            <input type="tel" id="ww-phone" name="phone" autocomplete="tel" />
+          </div>
+
+          <fieldset class="ww-form__row ww-form__choice" data-show="Wine List Review">
+            <legend>What kind of wine are we working with? <span aria-hidden="true">*</span></legend>
+            <div class="ww-form__options">
+              <label><input type="radio" name="venue" value="Restaurant" /> Restaurant</label>
+              <label><input type="radio" name="venue" value="Wine Bar" /> Wine Bar</label>
+            </div>
+          </fieldset>
+
+          <div class="ww-form__row" data-show="Wine List Review|Private Cellar Review">
+            <label for="ww-business">Business name or neighborhood</label>
+            <input type="text" id="ww-business" name="business" />
+          </div>
+
+          <div class="ww-form__row" data-show="Wine List Review">
+            <label for="ww-list-link">Link to your current wine list</label>
+            <input type="url" id="ww-list-link" name="wine_list_url" placeholder="https://" />
+          </div>
+
+          <div class="ww-form__row">
+            <label for="ww-notes">Anything I should know?</label>
+            <textarea id="ww-notes" name="notes" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--solid ww-form__submit">Request my review</button>
+
+          <p class="ww-form__success" role="status" hidden>
+            Thanks, I've got it. I'll be in touch soon to set up your review.
+          </p>
+          <p class="ww-form__error" role="alert" hidden>
+            Something went wrong — please try again, or email me directly.
+          </p>
         </div>
-
-        <div class="ww-form__row">
-          <label for="ww-email">Email <span aria-hidden="true">*</span></label>
-          <input type="email" id="ww-email" name="email" required autocomplete="email" />
-        </div>
-
-        <div class="ww-form__row">
-          <label for="ww-phone">Phone</label>
-          <input type="tel" id="ww-phone" name="phone" autocomplete="tel" />
-        </div>
-
-        <div class="ww-form__row">
-          <label for="interest">What kind of wine are we working with? <span aria-hidden="true">*</span></label>
-          <select id="interest" name="interest" required>
-            <option value="" disabled selected>Choose one</option>
-            <option value="Restaurant">Restaurant</option>
-            <option value="Wine Bar">Wine Bar</option>
-            <option value="Private Cellar">Private Cellar</option>
-            <option value="Something else entirely">Something else entirely</option>
-          </select>
-        </div>
-
-        <div class="ww-form__row">
-          <label for="ww-business">Business name or neighborhood</label>
-          <input type="text" id="ww-business" name="business" />
-        </div>
-
-        <div class="ww-form__row">
-          <label for="ww-list-link">Link to your current wine list</label>
-          <input type="url" id="ww-list-link" name="wine_list_url" placeholder="https://" />
-        </div>
-
-        <div class="ww-form__row">
-          <label for="ww-notes">Anything I should know?</label>
-          <textarea id="ww-notes" name="notes" rows="4"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--solid ww-form__submit">Request my review</button>
-
-        <p class="ww-form__success" role="status" hidden>
-          Thanks, I've got it. I'll be in touch soon to set up your review.
-        </p>
-        <p class="ww-form__error" role="alert" hidden>
-          Something went wrong — please try again, or email me directly.
-        </p>
       </form>
     </div>
   </section>
@@ -358,24 +377,58 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 </Base>
 
 <script>
-  // Arriving from a service page (?interest=…): preselect that option.
-  const interest = new URLSearchParams(window.location.search).get('interest');
-  const interestSelect = document.getElementById('interest') as HTMLSelectElement | null;
-  if (interest && interestSelect && [...interestSelect.options].some((o) => o.value === interest)) {
-    interestSelect.value = interest;
+  const form = document.getElementById('ww-form') as HTMLFormElement | null;
+
+  // Step 1 (review cards) drives which follow-up fields show. Rows marked
+  // data-show="A|B" appear only for those choices; the venue question is
+  // required only for a Wine List Review.
+  function syncFields() {
+    if (!form) return;
+    const choice =
+      form.querySelector<HTMLInputElement>('input[name="review"]:checked')?.value ?? '';
+    form.querySelectorAll<HTMLElement>('[data-show]').forEach((el) => {
+      el.hidden = !(el.dataset.show ?? '').split('|').includes(choice);
+    });
+    form.querySelectorAll<HTMLInputElement>('input[name="venue"]').forEach((input) => {
+      input.required = choice === 'Wine List Review';
+    });
   }
 
-  // Hero CTAs: preselect the matching option in the contact form before scrolling.
-  document.querySelectorAll<HTMLAnchorElement>('[data-preselect]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const select = document.getElementById('interest') as HTMLSelectElement | null;
-      if (select) select.value = el.dataset.preselect ?? '';
+  // Buttons around the site preselect with data-preselect / ?interest=
+  // (Restaurant, Wine Bar, Private Cellar): pick the card, and the venue.
+  const PRESELECT: Record<string, [string, string?]> = {
+    Restaurant: ['Wine List Review', 'Restaurant'],
+    'Wine Bar': ['Wine List Review', 'Wine Bar'],
+    'Private Cellar': ['Private Cellar Review'],
+  };
+
+  function preselect(key: string | null | undefined) {
+    const match = key ? PRESELECT[key] : undefined;
+    if (!form || !match) return;
+    const [review, venue] = match;
+    const reviewInput = form.querySelector<HTMLInputElement>(`input[name="review"][value="${review}"]`);
+    if (reviewInput) reviewInput.checked = true;
+    if (venue) {
+      const venueInput = form.querySelector<HTMLInputElement>(`input[name="venue"][value="${venue}"]`);
+      if (venueInput) venueInput.checked = true;
+    }
+    syncFields();
+  }
+
+  if (form) {
+    form.addEventListener('change', (event) => {
+      if ((event.target as HTMLInputElement).name === 'review') syncFields();
     });
+    syncFields();
+    preselect(new URLSearchParams(window.location.search).get('interest'));
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-preselect]').forEach((el) => {
+    el.addEventListener('click', () => preselect(el.dataset.preselect));
   });
 
   // Submit via fetch so we can show the exact success copy in place,
   // without navigating away to Formspree's generic confirmation page.
-  const form = document.getElementById('ww-form') as HTMLFormElement | null;
   if (form) {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -392,8 +445,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
         if (response.ok) {
           form.reset();
-          Array.from(form.elements).forEach((el) => {
-            if (el instanceof HTMLElement) el.style.display = 'none';
+          // Hide the cards and every field, leaving only the success message
+          form.querySelector<HTMLElement>('.ww-pick')?.setAttribute('hidden', '');
+          form.querySelectorAll<HTMLElement>('.ww-form__fields > *').forEach((el) => {
+            if (el !== success && el !== error) el.setAttribute('hidden', '');
           });
           success?.removeAttribute('hidden');
         } else {
@@ -982,7 +1037,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -990,11 +1045,145 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ww-form [hidden] { display: none; }
+
+.ww-form__fields {
+  width: 100%;
   max-width: 36rem;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+/* --- Step 1: review cards as radio options ----------------------------- */
+
+.ww-pick {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.ww-pick__card {
+  position: relative;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.ww-pick__card:hover { border-color: color-mix(in srgb, var(--plum) 45%, transparent); }
+.ww-pick__card:has(.ww-pick__radio:checked) {
+  border-color: var(--plum);
+  box-shadow: 0 0 0 1px var(--plum);
+}
+
+.ww-form .ww-pick__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  font-weight: 400;
+  padding-right: 2rem;          /* room for the radio dot */
+}
+.ww-pick__label .ww-card__title,
+.ww-pick__label .ww-card__desc { display: block; }
+
+/* the card's radio: a plum dot in the top-right corner */
+.ww-form .ww-pick__radio {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  border: 2px solid color-mix(in srgb, var(--plum) 45%, transparent);
+  border-radius: 50%;
+  background-color: var(--lifted-cream);
+  cursor: pointer;
+}
+.ww-form .ww-pick__radio:checked {
+  border-color: var(--plum);
+  background: radial-gradient(circle, var(--plum) 0 40%, var(--lifted-cream) 45%);
+}
+.ww-form .ww-pick__radio:focus { outline: none; }
+.ww-form .ww-pick__radio:focus-visible {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+}
+
+.ww-pick__details { margin-top: 0.875rem; }
+.ww-pick__details summary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--petrol);
+  cursor: pointer;
+}
+.ww-pick__details summary::after { content: ' +'; }
+.ww-pick__details[open] summary::after { content: ' –'; }
+.ww-pick__details summary::-webkit-details-marker { display: none; }
+.ww-pick__details summary:hover { color: var(--plum); }
+.ww-pick__details summary:focus-visible {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ww-form .ww-pick__other {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted-ink);
+  cursor: pointer;
+}
+
+/* small native radios (venue, "something else"), tinted plum */
+.ww-form input[type="radio"]:not(.ww-pick__radio) {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--plum);
+  cursor: pointer;
+}
+
+/* venue question: a fieldset styled like the other rows */
+.ww-form__choice {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.ww-form__choice legend {
+  padding: 0;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.ww-form__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+}
+.ww-form .ww-form__options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .ww-form__hp {
@@ -1020,7 +1209,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-form input,
-.ww-form select,
 .ww-form textarea {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -1032,28 +1220,12 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-form input:focus,
-.ww-form select:focus,
 .ww-form textarea:focus {
   outline: 2px solid var(--petrol);
   outline-offset: 1px;
 }
 
 .ww-form textarea { resize: vertical; }
-
-/* Drop the browser's native select styling (which ignores padding) so it
-   matches the text inputs' height; draw our own petrol chevron instead. */
-.ww-form select {
-  appearance: none;
-  -webkit-appearance: none;
-  box-sizing: border-box;
-  height: 3rem;                 /* same as the one-line text inputs (48px) */
-  padding-right: 2.5rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230E6E70' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.875rem center;
-  background-size: 12px 8px;
-  cursor: pointer;
-}
 
 .ww-form__submit {
   margin-top: 0.5rem;
