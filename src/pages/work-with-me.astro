@@ -363,11 +363,13 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
                 </ul>
               </details>
             </div>
+            <div class="ww-card ww-card--free ww-pick__card ww-pick__card--slim">
+              <label class="ww-pick__label">
+                <input type="radio" name="review" value="Something else entirely" class="ww-pick__radio" />
+                <span class="ww-card__title">Something else entirely</span>
+              </label>
+            </div>
           </div>
-          <label class="ww-pick__other">
-            <input type="radio" name="review" value="Something else entirely" />
-            Something else entirely
-          </label>
         </fieldset>
 
         <div class="ww-form__fields">
@@ -1148,18 +1150,18 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   border-radius: 2px;
 }
 
-.ww-form .ww-pick__other {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--muted-ink);
-  cursor: pointer;
+/* Slim, full-width third card: title only, radio centered vertically */
+.ww-pick__card--slim {
+  grid-column: 1 / -1;
+  padding-block: 1rem;
+}
+.ww-pick__card--slim .ww-card__title { margin-bottom: 0; }
+.ww-form .ww-pick__card--slim .ww-pick__radio {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* small native radios (venue, "something else"), tinted plum */
+/* small native radios (venue question), tinted plum */
 .ww-form input[type="radio"]:not(.ww-pick__radio) {
   width: 1.05rem;
   height: 1.05rem;
