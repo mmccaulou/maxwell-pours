@@ -46,8 +46,16 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   <section class="ww-proof">
     <div class="container">
       <ul class="ww-proof__list">
-        <li>Directed multiple <span class="nowrap">million-dollar</span> wine programs</li>
-        <li>Built a wine bar named among Seattle's best</li>
+        <li>
+          Named to{' '}
+          <a href="https://seattle.eater.com/maps/best-wine-bars-seattle#itto-s-vino" target="_blank" rel="noopener">Eater's</a>{' '}
+          and{' '}
+          <a href="https://www.theinfatuation.com/seattle/reviews/ittos-vino" target="_blank" rel="noopener">The Infatuation's</a>{' '}
+          best Seattle wine bars
+        </li>
+        <li>Advanced Sommelier candidate, Court of Master Sommeliers</li>
+        <li>Wine Director for <span class="nowrap">$1M+</span> wine programs</li>
+        <li>A decade in Seattle wine</li>
       </ul>
     </div>
   </section>
@@ -558,6 +566,21 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 }
 
 .ww-proof__list .nowrap { white-space: nowrap; }
+
+/* Publication links: same plum as the banner text, marked by underline */
+.ww-proof__list a {
+  white-space: nowrap;   /* keep each publication name on one line */
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.ww-proof__list a:hover { text-decoration-thickness: 2px; }
+.ww-proof__list a:focus-visible {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 
 /* ============================================================
