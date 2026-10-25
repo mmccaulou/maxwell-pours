@@ -775,23 +775,26 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   color: var(--ink);
 }
 
-/* --- Connectors: dashed line + arrowhead from each step to the next ---
-   Phones: circles sit in a left gutter and the line runs down it.
-   Desktop: circles sit above the text and the line runs across. */
-.ww-how__list {
-  --connector: color-mix(in srgb, var(--plum) 45%, transparent);
-}
-
+/* --- Step chevrons: one icon centered in each gap between circles ---
+   Phones: circles sit in a left gutter, chevrons point down between them.
+   Desktop: circles sit above the text, chevrons point right. The icon is
+   a mask so its color comes from the plum token. */
 .ww-how__list li { position: relative; }
 
-.ww-how__list li:not(:last-child)::before,
 .ww-how__list li:not(:last-child)::after {
   content: '';
   position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: var(--plum);
+  opacity: 0.7;
+  -webkit-mask: var(--chevron) center / contain no-repeat;
+          mask: var(--chevron) center / contain no-repeat;
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M5 2.5 9.5 7 5 11.5' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 @media (max-width: 767px) {
-  .ww-how__list { gap: 2.5rem; }   /* room for the connector between steps */
+  .ww-how__list { gap: 2rem; }   /* room for the chevron between steps */
   .ww-how__list li {
     padding-left: 3rem;
     min-height: 2rem;
@@ -802,44 +805,25 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
     top: -0.25rem;
     margin-bottom: 0;
   }
-  /* vertical dashed line, circle bottom → just above the next circle */
-  .ww-how__list li:not(:last-child)::before {
-    left: calc(1rem - 1px);
-    top: 2.25rem;
-    bottom: calc(-2.5rem + 0.75rem);   /* list gap is 2.5rem */
-    border-left: 2px dashed var(--connector);
-  }
-  /* downward arrowhead */
+  /* midway between this circle's bottom (1.75rem) and the next circle's
+     top (100% + 2rem gap − 0.25rem) */
   .ww-how__list li:not(:last-child)::after {
-    left: calc(1rem - 4px);
-    bottom: calc(-2.5rem + 0.6rem);
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid var(--connector);
-    border-bottom: 2px solid var(--connector);
-    transform: rotate(45deg);
+    left: 1rem;
+    top: calc((100% + 3.5rem) / 2);
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 }
 
 @media (min-width: 768px) {
-  /* horizontal dashed line, circle right edge → just before the next circle */
-  .ww-how__list li:not(:last-child)::before {
-    top: calc(1rem - 1px);
-    left: 2.75rem;
-    right: calc(-1.25rem + 0.875rem);   /* list gap is 1.25rem */
-    border-top: 2px dashed var(--connector);
-  }
-  /* rightward arrowhead */
+  /* midway between this circle's right edge (2rem) and the next circle's
+     left edge (100% + 1.25rem gap) */
   .ww-how__list li:not(:last-child)::after {
-    top: calc(1rem - 5px);
-    right: calc(-1.25rem + 0.75rem);
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid var(--connector);
-    border-right: 2px solid var(--connector);
-    transform: rotate(45deg);
+    top: 1rem;
+    left: calc((100% + 3.25rem) / 2);
+    transform: translate(-50%, -50%);
   }
 }
+
 
 .ww-how__close {
   font-family: var(--font-display);
