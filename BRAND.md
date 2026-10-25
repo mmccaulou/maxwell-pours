@@ -9,7 +9,7 @@ Maxwell Pours is a wine publication written by Maxwell McCaulou. The publication
 Punctuate sentences; don't punctuate labels.
 
 - **Sentence-style lines end with a period.** Any heading, subtitle, or tagline that says something in Maxwell's voice gets a period, including short fragments: "Let's get into wine worth drinking.", "Start with a review.", "For restaurateurs in search of the right list."
-- **Labels get no period.** Headings that simply name a section, category, or service: "How It Works", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Revival".
+- **Labels get no period.** Headings that simply name a section, category, or service: "How I Work", "Selected Work", "Recent Pours", "Restaurants & Wine Bars", "On the Floor", "Wine Program Revival".
 - **Exception: article titles get no period**, even when they read as a sentence, following standard publication practice.
 - Buttons and links never take a period ("Request my review").
 
@@ -23,7 +23,7 @@ The system is locked. Don't add base colors; hover and wash shades are derived f
 |---|---|---|---|
 | Primary | Petrol | `#0E6E70` | Identity and structure: masthead, nav, links, rules, CTA bands, The Bottle name, favicon background |
 | Primary | Hot Pink | `#E84A8A` | Small pops: category tags, buttons, captions, tagline, active-nav underline, "Free" card title |
-| Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me achievements banner (text and dividers), Work With Me "How It Works" step circles (cream numbers on plum) and the chevrons between them (plum at 70%). Use it only where petrol or hot pink can't do the job |
+| Tertiary (rare) | Plum | `#8E1E54` | Rare accent only: link and "read more" hovers, small highlights, form error message, Work With Me achievements banner (text and dividers), Work With Me "How I Work" step circles (cream numbers on plum) and the chevrons between them (plum at 70%). Use it only where petrol or hot pink can't do the job |
 | Foundation | Lifted Cream | `#FAF3E5` | Page background, text on dark surfaces (including on plum and pink) |
 | Foundation | Deep Cream | `#F4E9D2` | Borders, hairlines, raised surfaces |
 | Foundation | Ink | `#211318` | Body text and all page headlines on light backgrounds (article titles, Work With Me) |
