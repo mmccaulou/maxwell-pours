@@ -50,15 +50,15 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   <section class="ww-proof">
     <div class="container">
       <ul class="ww-proof__list">
-        <li>
+        <li><span class="ww-proof__text">
           Named a best Seattle wine bar by{' '}
           <a href="https://seattle.eater.com/maps/best-wine-bars-seattle#itto-s-vino" target="_blank" rel="noopener">Eater</a>{' '}
           and{' '}
           <a href="https://www.theinfatuation.com/seattle/reviews/ittos-vino" target="_blank" rel="noopener">The Infatuation</a>
-        </li>
-        <li>Wine Director for multiple <span class="nowrap">$1M+</span> wine programs</li>
-        <li>Advanced Sommelier candidate, <a href="https://www.mastersommeliers.org" target="_blank" rel="noopener" title="Court of Master Sommeliers" aria-label="CMS (Court of Master Sommeliers)">CMS</a></li>
-        <li>A decade in Seattle wine, and an entire career in beverage</li>
+        </span></li>
+        <li><span class="ww-proof__text">Wine Director for multiple <span class="nowrap">$1M+</span> wine programs</span></li>
+        <li><span class="ww-proof__text">Advanced Sommelier candidate, <a href="https://www.mastersommeliers.org" target="_blank" rel="noopener" title="Court of Master Sommeliers" aria-label="CMS (Court of Master Sommeliers)">CMS</a></span></li>
+        <li><span class="ww-proof__text">A decade in Seattle wine, and an entire career in beverage</span></li>
       </ul>
     </div>
   </section>
@@ -519,6 +519,17 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   }
 
   .ww-proof__list li:first-child { border-left: none; }
+}
+
+/* Tablet + desktop: items share a row, so center each item's text
+   vertically; a 2-line item sits level with a 3-line neighbor and the
+   dividers stay full height. The span keeps text and links in one flow. */
+@media (min-width: 560px) {
+  .ww-proof__list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .ww-proof__list .nowrap { white-space: nowrap; }
