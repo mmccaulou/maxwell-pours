@@ -51,8 +51,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
     <div class="container">
       <ul class="ww-proof__list">
         <li>Directed multiple <span class="nowrap">million-dollar</span> wine programs</li>
-        <li>$34k in profit recovered through smarter buying</li>
-        <li>30% reduction in inventory shown in 9 months</li>
         <li>Built a wine bar named among Seattle's best</li>
       </ul>
     </div>
@@ -501,7 +499,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
 
 @media (min-width: 960px) {
   .ww-proof__list {
-    grid-template-columns: repeat(4, 1fr);
+    /* one column per item, however many there are */
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     gap: 0;
   }
 
