@@ -775,6 +775,72 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjygdelv';
   color: var(--ink);
 }
 
+/* --- Connectors: dashed line + arrowhead from each step to the next ---
+   Phones: circles sit in a left gutter and the line runs down it.
+   Desktop: circles sit above the text and the line runs across. */
+.ww-how__list {
+  --connector: color-mix(in srgb, var(--plum) 45%, transparent);
+}
+
+.ww-how__list li { position: relative; }
+
+.ww-how__list li:not(:last-child)::before,
+.ww-how__list li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+}
+
+@media (max-width: 767px) {
+  .ww-how__list { gap: 2.5rem; }   /* room for the connector between steps */
+  .ww-how__list li {
+    padding-left: 3rem;
+    min-height: 2rem;
+  }
+  .ww-how__num {
+    position: absolute;
+    left: 0;
+    top: -0.25rem;
+    margin-bottom: 0;
+  }
+  /* vertical dashed line, circle bottom → just above the next circle */
+  .ww-how__list li:not(:last-child)::before {
+    left: calc(1rem - 1px);
+    top: 2.25rem;
+    bottom: calc(-2.5rem + 0.75rem);   /* list gap is 2.5rem */
+    border-left: 2px dashed var(--connector);
+  }
+  /* downward arrowhead */
+  .ww-how__list li:not(:last-child)::after {
+    left: calc(1rem - 4px);
+    bottom: calc(-2.5rem + 0.6rem);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--connector);
+    border-bottom: 2px solid var(--connector);
+    transform: rotate(45deg);
+  }
+}
+
+@media (min-width: 768px) {
+  /* horizontal dashed line, circle right edge → just before the next circle */
+  .ww-how__list li:not(:last-child)::before {
+    top: calc(1rem - 1px);
+    left: 2.75rem;
+    right: calc(-1.25rem + 0.875rem);   /* list gap is 1.25rem */
+    border-top: 2px dashed var(--connector);
+  }
+  /* rightward arrowhead */
+  .ww-how__list li:not(:last-child)::after {
+    top: calc(1rem - 5px);
+    right: calc(-1.25rem + 0.75rem);
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--connector);
+    border-right: 2px solid var(--connector);
+    transform: rotate(45deg);
+  }
+}
+
 .ww-how__close {
   font-family: var(--font-display);
   font-weight: 700;
