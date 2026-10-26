@@ -38,7 +38,7 @@ I strongly believe that a wine program has the potential to be the most profitab
 - Complete market pricing structure, built to hit your costing goals
 - Buying plan for your budget and timeline
 - Ordering guide and introductions to my personal distribution contacts
-- Minimum 3 staff training sessions
+- Minimum three staff training sessions
   1. Wine 101 and Service Standards
   2. Tasting and Terminology
   3. Your Wine List and Pairings Masterclass
