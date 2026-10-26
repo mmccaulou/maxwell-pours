@@ -29,12 +29,12 @@ faq:
 
 I’ve spent my entire profession in hospitality, and know first-hand that restaurateurs are the bravest and hardest working people out there. This rare breed looks at an industry with razor-thin margins, endless competition, and an incredibly informed clientele, and says “I’ve got something to offer.” And it’s true, many do have a unique lens through which they view a culture, community, and its food. But as we know, the lights have to stay on in order to share that story.
 
-I strongly believe that a wine program has the potential to be the most profitable part of your business, but three things can get in the way of that. Without **sophisticated market pricing**, your guests feel taken advantage of when comparing prices on their phone, and you don’t make the margin necessary to excel as a business. Without a **unique voice**, the food and wine feel disconnected. Finally without **education**, your staff doesn’t move the product and your guests have no idea how hard you’ve worked to give them a special experience. Bring me on to help design your wine program, and we’ll work together to overcome these common challenges.
+I strongly believe that a wine program has the potential to be the most profitable part of your business, but three things can get in the way of that. Without **sophisticated market pricing**, your guests feel taken advantage of when comparing prices on their phone, and you don’t make the margin necessary to excel as a business. Without a **unique voice**, the food and wine feel disconnected. Finally, without **education**, your staff doesn’t move the product and your guests have no idea how hard you’ve worked to give them a special experience. Bring me on to help design your wine program, and we’ll work together to overcome these common challenges.
 
 **What we accomplish through this service:**
 
 - Label selections for BTG and bottle lists
-- Menu design on program of your choosing (I suggest Adobe)
+- Menu design on a program of your choosing (I suggest Adobe InDesign)
 - Complete market pricing structure, built to hit your costing goals
 - Buying plan for your budget and timeline
 - Ordering guide and introductions to my personal distribution contacts
@@ -42,7 +42,7 @@ I strongly believe that a wine program has the potential to be the most profitab
   1. Wine 101 and Service Standards
   2. Tasting and Terminology
   3. Your Wine List and Pairings Masterclass
-- Establish an inventory system and take initial count
+- Inventory taking system and initial count
 - Wine Bible with food pairings and tasting notes for future reference
 
-**Pricing**, **voice**, and **education** are the three pillars that I put at the forefront of my service, and have led to my success in this grueling industry. I’ll navigate the complexities behind a wine list that works for your accountant and wows your guests. I’ll work with you and your culinary team to understand the story at the heart of your restaurant. I bring graphic design experience to the menu design process. Education gets me out of bed in the mornings, and I’ll take your staff through a personalized wine curriculum so they not only understand the basics, but how to sell your labels in the context of the larger world of wines. I believe that for our guests to get the most out of their experience, they need to be educated on what they’re being served, and that means we need to be educated first.
+**Pricing**, **voice**, and **education** are the three pillars that I put at the forefront of my service, and have led to my success in this grueling industry. I’ll navigate the complexities behind a wine list that works for your accountant and wows your guests. I’ll work with you and your culinary team to understand the story at the heart of your restaurant. I bring graphic design experience to the menu design process. Education gets me out of bed in the mornings, and I’ll take your staff through a personalized wine curriculum so they not only understand the basics, but also how to sell your labels in the context of the larger world of wines. I believe that for our guests to get the most out of their experience they need to be educated on what they’re being served, and as hospitalitarians that means we need to be educated first.
