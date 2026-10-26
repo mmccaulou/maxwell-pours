@@ -135,6 +135,9 @@ const cta = { label: tracks[track].cta, href: contactHref(track) };
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
 }
+/* a lead-in line sits right on top of its list */
+.svc__body :global(p:has(+ ul)),
+.svc__body :global(p:has(+ ol)) { margin-bottom: 0; }
 .svc__body :global(ul) { list-style: disc; }
 .svc__body :global(ol) { list-style: decimal; margin: 0.25rem 0 0.5rem; }
 .svc__body :global(li) { margin-bottom: 0.25rem; }

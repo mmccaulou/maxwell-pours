@@ -31,7 +31,7 @@ I’ve spent my entire profession in hospitality, and know first-hand that resta
 
 I strongly believe that a wine program has the potential to be the most profitable part of your business, but three things can get in the way of that. Without sophisticated market pricing, your guests feel taken advantage of when comparing prices on their phone, and you don’t make the margin necessary to excel as a business. Without a unique voice, the food and wine feel disconnected. Finally without education, your staff doesn’t move the product and your guests have no idea how hard you’ve worked to give them a special experience. Bring me on to help design your wine program, and we’ll work together to overcome these common challenges.
 
-What we accomplish through this service:
+**What we accomplish through this service:**
 
 - Label selections for BTG and bottle lists
 - Menu design on program of your choosing (I suggest Adobe)
