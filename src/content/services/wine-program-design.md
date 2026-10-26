@@ -9,8 +9,7 @@ blurb: "Opening a new restaurant or bar? I build a program to reflect your visio
 billing: One-time project
 price: "$3,500"
 priceUnit: ""
-# TODO: placeholder copy (Lorem Ipsum). Replace the meta description.
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+description: "Pricing, voice, and education are the three pillars that I put at the forefront of my service, and have led to my success in this grueling industry."
 # TODO: placeholder copy (Lorem Ipsum). Replace all four FAQ questions and answers.
 faq:
   - question: "Lorem ipsum dolor sit amet?"
