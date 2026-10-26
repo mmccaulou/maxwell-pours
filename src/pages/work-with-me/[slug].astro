@@ -127,6 +127,18 @@ const cta = { label: tracks[track].cta, href: contactHref(track) };
   margin-bottom: 1.25rem;
   max-width: none;
 }
+.svc__body :global(ul),
+.svc__body :global(ol) {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.svc__body :global(ul) { list-style: disc; }
+.svc__body :global(ol) { list-style: decimal; margin: 0.25rem 0 0.5rem; }
+.svc__body :global(li) { margin-bottom: 0.25rem; }
+.svc__body :global(li::marker) { color: var(--plum); }
 
 /* --- FAQ: native <details>, works without JavaScript ------------ */
 

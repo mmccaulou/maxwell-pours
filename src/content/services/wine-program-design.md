@@ -27,10 +27,22 @@ faq:
       Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.
 ---
 
-<!-- TODO: placeholder copy (Lorem Ipsum). Replace the three body paragraphs below. -->
+I’ve spent my entire profession in hospitality, and know first-hand that restaurateurs are the bravest and hardest working people out there. This rare breed looks at an industry with razor-thin margins, endless competition, and an incredibly informed clientele, and says “I’ve got something to offer.” And it’s true, many do have a unique lens through which they view a culture, community, and its food. But as we know, the lights have to stay on in order to share that story.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla gravida orci a odio, nullam varius turpis et commodo pharetra.
+I strongly believe that a wine program has the potential to be the most profitable part of your business, but three things can get in the way of that. Without sophisticated market pricing, your guests feel taken advantage of when comparing prices on their phone, and you don’t make the margin necessary to excel as a business. Without a unique voice, the food and wine feel disconnected. Finally without education, your staff doesn’t move the product and your guests have no idea how hard you’ve worked to give them a special experience. Bring me on to help design your wine program, and we’ll work together to overcome these common challenges.
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+What we accomplish through this service:
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident. Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+- Label selections for BTG and bottle lists
+- Menu design on program of your choosing (I suggest Adobe)
+- Complete market pricing structure, built to hit your costing goals
+- Buying plan for your budget and timeline
+- Ordering guide and with to my personal distribution contacts
+- Minimum 3 staff training sessions
+  1. Wine 101 and Service Standards
+  2. Tasting and Terminology
+  3. Your Wine List and Pairings Masterclass
+- Establish an inventory system and take initial count
+- Wine Bible with food pairings and tasting notes for future reference
+
+Pricing, voice, and education are the three pillars that I put at the forefront of my service, and have led to my success in this grueling industry. I’ll navigate the complexities behind a list that works for your accountant and wows your guests. I’ll work with you and your culinary team to understand the story at the heart of your restaurant. I bring graphic design experience to the menu design process. Education gets me out of bed in the mornings, and I’ll take your staff through a personalized wine curriculum so they not only understand the basics, but how to sell your labels in the context of the larger world of wines. I believe that for our guests to get the most out of their experience, they need to be educated on what they’re being served, and that means we need to be educated first.
