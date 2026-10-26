@@ -37,7 +37,7 @@ What we accomplish through this service:
 - Menu design on program of your choosing (I suggest Adobe)
 - Complete market pricing structure, built to hit your costing goals
 - Buying plan for your budget and timeline
-- Ordering guide and with to my personal distribution contacts
+- Ordering guide and introductions to my personal distribution contacts
 - Minimum 3 staff training sessions
   1. Wine 101 and Service Standards
   2. Tasting and Terminology
