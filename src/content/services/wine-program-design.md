@@ -10,11 +10,11 @@ billing: One-time project
 price: "$3,500"
 priceUnit: ""
 description: "Pricing, voice, and education are the three pillars that I put at the forefront of my service, and have led to my success in this grueling industry."
-# TODO: placeholder copy (Lorem Ipsum). Replace all four FAQ questions and answers.
+# TODO: placeholder copy (Lorem Ipsum). Replace FAQ questions 2 to 4.
 faq:
-  - question: "Lorem ipsum dolor sit amet?"
+  - question: "When should I bring you in?"
     answer: >-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras porttitor metus justo, ut fringilla velit fermentum a. Proin consequat, ante quis pharetra rhoncus, mi lacus venenatis nisl, vel aliquet lorem nisi et sapien.
+      Ideally 2-4 months before opening, once your concept, menu direction, and beverage budget are settled. The decisions we make best happen before storage, glassware, and POS setup, but having real culinary flavors to work off of is important. Tighter timelines work too, we just get fewer rounds of tastings.
   - question: "Lorem ipsum dolor sit amet?"
     answer: >-
       Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
