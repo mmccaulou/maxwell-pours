@@ -1,0 +1,201 @@
+---
+// Service detail page: one shared template for all six services.
+// Content lives in src/content/services/<slug>.md, the same files the
+// /work-with-me cards read from.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+import { getServices, tracks, contactHref } from '../../lib/services';
+
+export async function getStaticPaths() {
+  const services = await getServices();
+  return services.map((service) => ({ params: { slug: service.id }, props: { service } }));
+}
+
+const { service } = Astro.props;
+const { title, tag, blurb, billing, price, priceUnit, description, faq, track } = service.data;
+const { Content } = await render(service);
+const cta = { label: tracks[track].cta, href: contactHref(track) };
+---
+
+<Base title={title} description={description}>
+  <article class="svc container">
+
+    <a href="/work-with-me/" class="svc__back">&larr; All services</a>
+
+    <header class="svc__header">
+      <p class="svc__tag">{tag}</p>
+      <h1 class="svc__title">{title}</h1>
+      <p class="svc__intro">{blurb}</p>
+      <p class="svc__terms">
+        <span class="svc__billing">{billing}</span>
+        <span aria-hidden="true"> · </span>
+        <span class="svc__price">From <strong>{price}</strong>{priceUnit}</span>
+      </p>
+      <a href={cta.href} class="btn btn--solid">{cta.label}</a>
+    </header>
+
+    <div class="svc__body">
+      <Content />
+    </div>
+
+    {faq.length > 0 && (
+      <section class="svc__faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="svc__faq-heading">FAQ</h2>
+        {faq.map((item) => (
+          <details class="svc__faq-item">
+            <summary>{item.question}</summary>
+            <div class="svc__faq-answer">{item.answer}</div>
+          </details>
+        ))}
+      </section>
+    )}
+
+    <div class="svc__cta">
+      <a href={cta.href} class="btn btn--solid">{cta.label}</a>
+    </div>
+
+  </article>
+
+  <AuthorBio />
+</Base>
+
+<style>
+.svc {
+  max-width: calc(var(--prose-width) + 2.5rem);   /* prose width + container gutters */
+  padding-block: 2rem 3.5rem;
+}
+
+.svc__back {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--petrol);
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+.svc__back:hover { color: var(--plum); text-decoration: underline; }
+.svc__back:focus-visible { outline: 2px solid var(--petrol); outline-offset: 2px; }
+
+/* --- Header: mirrors the card (tag, title, blurb, terms) -------- */
+
+.svc__header { margin-bottom: 2.5rem; }
+
+.svc__tag {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--petrol);
+  margin-bottom: 0.5rem;
+  max-width: none;
+}
+
+.svc__title {
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.svc__intro {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--muted-ink);
+  margin-bottom: 1.25rem;
+  max-width: none;
+}
+
+.svc__terms {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--ink);
+  padding-block: 0.875rem;
+  border-block: 1px solid color-mix(in srgb, var(--petrol) 20%, transparent);
+  margin-bottom: 1.75rem;
+  max-width: none;
+}
+.svc__billing { font-weight: 700; }
+.svc__price strong { font-weight: 700; }
+
+/* --- Body copy: same reading treatment as article prose --------- */
+
+.svc__body :global(p) {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  max-width: none;
+}
+.svc__body :global(ul),
+.svc__body :global(ol) {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+/* a lead-in line sits right on top of its list */
+.svc__body :global(p:has(+ ul)),
+.svc__body :global(p:has(+ ol)) { margin-bottom: 0; }
+.svc__body :global(ul) { list-style: disc; }
+.svc__body :global(ol) { list-style: decimal; margin: 0.25rem 0 0.5rem; }
+.svc__body :global(li) { margin-bottom: 0.25rem; }
+.svc__body :global(li::marker) { color: var(--plum); }
+
+/* --- FAQ: native <details>, works without JavaScript ------------ */
+
+.svc__faq { margin-top: 3rem; }
+
+.svc__faq-heading { margin-bottom: 1rem; }
+
+.svc__faq-item {
+  border-top: 1px solid color-mix(in srgb, var(--petrol) 20%, transparent);
+}
+.svc__faq-item:last-of-type {
+  border-bottom: 1px solid color-mix(in srgb, var(--petrol) 20%, transparent);
+}
+
+.svc__faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.18s;
+}
+.svc__faq-item summary::-webkit-details-marker { display: none; }
+.svc__faq-item summary::after {
+  content: '+';
+  content: '+' / '';              /* decorative: hidden from screen readers */
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--petrol);
+}
+.svc__faq-item[open] summary::after {
+  content: '–';
+  content: '–' / '';
+}
+.svc__faq-item summary:hover { color: var(--plum); }
+.svc__faq-item summary:focus-visible {
+  outline: 2px solid var(--petrol);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.svc__faq-answer {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  padding-bottom: 1.25rem;
+}
+
+.svc__cta { margin-top: 2.5rem; }
+</style>

@@ -16,4 +16,22 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// Work With Me services: one file per service card. The card on /work-with-me
+// and the service's own page both read from here, so they never drift apart.
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    track: z.enum(['restaurants', 'cellars']),
+    order: z.number(),              // position within its track (1–3)
+    tag: z.string(),                // "From scratch", "Year-round", …
+    blurb: z.string(),              // card description + page intro
+    billing: z.string(),            // "One-time project", "Monthly retainer"
+    price: z.string(),              // "$3,500"
+    priceUnit: z.string().optional().default(''),   // "/month" or empty
+    description: z.string(),        // meta description
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+  }),
+});
+
+export const collections = { posts, services };
